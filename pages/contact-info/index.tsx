@@ -2,8 +2,8 @@ import { Layout } from '../../components/Layout'
 
 export default function Index({ data }) {
   return (
-    <Layout data={data}>
-      <h2 className="h2 mb-8">Financial Information</h2>
+    <Layout data={data} title="Contact Information">
+      <h2 className="h2 mb-8">Contact Information</h2>
     </Layout>
   )
 }

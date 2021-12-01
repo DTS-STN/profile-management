@@ -2,7 +2,7 @@ import { Layout } from '../../components/Layout'
 
 export default function Index({ data }) {
   return (
-    <Layout data={data}>
+    <Layout data={data} title="User Preferences">
       <h2 className="h2 mb-8">User Preferences</h2>
     </Layout>
   )

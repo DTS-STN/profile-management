@@ -1,20 +1,13 @@
 import { Input } from '../../components/Forms/Input'
 import { Layout } from '../../components/Layout'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 
 export default function Index({ data }) {
-  const router = useRouter()
   return (
-    <Layout data={data} title="Financial Information">
+    <Layout data={data}>
       <div className="flex justify-between items-start">
         <h2 className="h2 mb-8">Financial Information</h2>
-        <button
-          className="btn btn-primary"
-          onClick={(e) => router.push('/financial-info/edit')}
-        >
-          Edit
-        </button>
+        <button className="btn btn-primary">Edit</button>
       </div>
       <p>
         Payments can be deposited directly to your blank account when you
@@ -45,21 +38,18 @@ export default function Index({ data }) {
             name="branchNumber"
             label="Branch number"
             value={data.branchNumber}
-            disabled
           />
           <Input
             type="text"
             name="institutionNumber"
             label="Institution number"
             value={data.institutionNumber}
-            disabled
           />
           <Input
             type="text"
             name="accountNumber"
             label="Account number"
             value={data.accountNumber}
-            disabled
           />
         </form>
       </div>

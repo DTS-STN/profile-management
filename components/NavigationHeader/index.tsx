@@ -17,12 +17,12 @@ export const NavigationHeader: React.VFC<{ path: string }> = ({ path }) => {
       </li>
       <li
         className={`rounded py-3 px-6 ${
-          path == '/financial-info'
+          path.includes('/financial-info')
             ? 'text-white text-h4 bg-primary'
             : 'text-primary text-h4 border border-primary-border underline'
         }`}
       >
-        <Link href="financial-info" passHref>
+        <Link href="/financial-info" passHref>
           <a>2. Financial Information</a>
         </Link>
       </li>
