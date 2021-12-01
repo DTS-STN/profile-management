@@ -1,5 +1,6 @@
 import { Input } from '../../components/Forms/Input'
 import { Layout } from '../../components/Layout'
+import Image from 'next/image'
 
 export default function Index({ data }) {
   return (
@@ -15,9 +16,18 @@ export default function Index({ data }) {
         contacting your branch. You can also find these numbers on any void
         cheque.
       </p>
-      <div className="flex justify-center items-center h-52">
-        <p>Need void cheque image</p>
+      <div className="flex justify-center items-center my-8">
+        <Image
+          src="/check.jpeg"
+          width="533px"
+          height="253px"
+          alt="Image of a void cheque"
+        />
       </div>
+      <p className="mb-12">
+        The three numbers you eill need to enter are at the bottom of the cheque
+        from left to right
+      </p>
       <div className="grid grid-cols-2 mb-14">
         <form
           action="#"

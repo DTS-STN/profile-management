@@ -5,9 +5,16 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
 }
 
+const placeHolderOnChange = (e) => void 0
+
 export const Input: React.VFC<InputProps> = (props) => (
   <div>
     <label htmlFor={props.name}>{props.label}</label>
-    <input name={props.name} {...props} className="form-control" />
+    <input
+      name={props.name}
+      {...props}
+      onChange={props.onChange ?? placeHolderOnChange}
+      className="form-control"
+    />
   </div>
 )

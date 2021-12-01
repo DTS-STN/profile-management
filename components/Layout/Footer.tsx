@@ -10,6 +10,7 @@ export const Footer = () => (
     </div>
     <div className="bg-primary min-h-[182px]">
       <div className="container mx-auto">
+        placeholder
         <svg
           className="absolute right-0"
           width="590"
@@ -42,28 +43,8 @@ export const Footer = () => (
         </svg>
       </div>
     </div>
-    <nav>
-      <ul className="flex flex-row list-disc px-4">
-        <li className="list-none after:px-5">
-          <a href="/en/social.html">Social media</a>
-        </li>
-
-        <li className="after:px-5">
-          <a href="/en/mobile.html">Mobile applications</a>
-        </li>
-
-        <li className="after:px-5">
-          <a href="/en/government/about.html">About Canada.ca</a>
-        </li>
-
-        <li>
-          <a href="/en/transparency/terms.html">Terms and conditions</a>
-        </li>
-
-        <li>
-          <a href="/en/transparency/privacy.html">Privacy</a>
-        </li>
-      </ul>
-    </nav>
+    <div className="container mx-auto">
+      <nav>nav items</nav>
+    </div>
   </footer>
 )
