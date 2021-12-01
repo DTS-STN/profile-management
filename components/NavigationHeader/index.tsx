@@ -8,8 +8,19 @@ export const NavigationHeader = () => {
             : 'text-primary text-h4 border border-primary-border underline'
         }`}
       >
-        <a className="" href="#">
-          Personal Information
+        <a className="" href="/">
+          1. Personal Information
+        </a>
+      </li>
+      <li
+        className={`rounded py-3 px-6 ${
+          false
+            ? 'text-white text-h4 bg-primary'
+            : 'text-primary text-h4 border border-primary-border underline'
+        }`}
+      >
+        <a className="" href="financial-info">
+          2. Financial Information
         </a>
       </li>
       <li
@@ -20,7 +31,7 @@ export const NavigationHeader = () => {
         }`}
       >
         <a className="" href="#">
-          Financial Information
+          3. Contact Information
         </a>
       </li>
       <li
@@ -31,18 +42,7 @@ export const NavigationHeader = () => {
         }`}
       >
         <a className="" href="#">
-          Contact Information
-        </a>
-      </li>
-      <li
-        className={`rounded py-3 px-6 ${
-          false
-            ? 'text-white text-h4 bg-primary'
-            : 'text-primary text-h4 border border-primary-border underline'
-        }`}
-      >
-        <a className="" href="#">
-          User Preferences
+          4. User Preferences
         </a>
       </li>
     </ol>

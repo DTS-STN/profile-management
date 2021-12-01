@@ -1,22 +1,9 @@
-import { GetStaticProps } from 'next'
-import { Breadcrumbs } from '../components/Breadcrumbs'
 import { Input } from '../components/Forms/Input'
 import { Layout } from '../components/Layout'
-import { NavigationHeader } from '../components/NavigationHeader'
 
 export default function Home({ data }) {
   return (
-    <Layout>
-      <Breadcrumbs
-        items={['Service Canada', 'OAS/GIS Account', 'Personal Information']} // last item is page name
-      />
-      {/* 
-      TODO: h1's require red underlines according to spec, talk to Ishita
-       */}
-      <h1 className="h1 my-8 mb-10">Welcome, {`${data.firstName}`}</h1>
-      <NavigationHeader />
-      <hr className="border-b border-black/20 my-10" />
-
+    <Layout data={data}>
       <h2 className="h2 mb-8">Personal Information</h2>
       <div className="grid grid-cols-2 mb-14">
         <form
