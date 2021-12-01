@@ -10,7 +10,7 @@ export const BreadcrumbItem: React.VFC<{
   >
     <a
       href="#"
-      className="before:pl-3 text-sm text-primary underline inline-flex items-center dark:text-gray-400 dark:hover:text-white "
+      className="text-sm text-primary underline inline-flex items-center dark:text-gray-400 dark:hover:text-white "
     >
       {breadcrumb}
     </a>

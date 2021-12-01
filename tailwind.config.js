@@ -3,6 +3,11 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false,
   theme: {
+    screens: {
+      lg: '1200px',
+      md: '992px',
+      sm: '768px',
+    },
     fontSize: {
       h6: ['19px', '21px'],
       base: ['20px', '33px'],
@@ -23,7 +28,7 @@ module.exports = {
       'default-border': '#dcdee1',
 
       // primary
-      'primary': '#2572b4',
+      'primary': '#293749',
       'primary-border': '#091c2d',
       'primary-hover': '#1c578a;',
 
