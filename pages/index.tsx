@@ -1,6 +1,7 @@
 import { Input } from '../components/Forms/Input'
 import { Layout } from '../components/Layout'
 import Head from 'next/head'
+import { NavButtons } from '../components/NavButtons'
 
 export default function Home({ data }) {
   return (
@@ -60,10 +61,7 @@ export default function Home({ data }) {
             />
           </form>
         </div>
-        <div className="flex justify-between items-center">
-          <button className="btn btn-default">Back</button>
-          <button className="btn btn-primary">Next</button>
-        </div>
+        <NavButtons fromLocation="#" toLocation="/financial-info" />
       </Layout>
     </div>
   )

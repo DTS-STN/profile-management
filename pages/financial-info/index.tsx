@@ -2,6 +2,7 @@ import { Input } from '../../components/Forms/Input'
 import { Layout } from '../../components/Layout'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { NavButtons } from '../../components/NavButtons'
 
 export default function Index({ data }) {
   const router = useRouter()
@@ -63,7 +64,7 @@ export default function Index({ data }) {
           />
         </form>
       </div>
-      <div className="flex justify-between items-center"></div>
+      <NavButtons fromLocation="/" toLocation="/contact-info" />
     </Layout>
   )
 }
