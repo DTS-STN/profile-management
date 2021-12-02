@@ -10,7 +10,7 @@ This project uses
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Jest](https://jestjs.io/) for unit testing
-- [Cypress](https://www.cypress.io/) for end-to-end testing.
+- [Cypress](https://www.cypress.io/) for end-to-end testing
 
 ## How to Implement/Get Started
 
