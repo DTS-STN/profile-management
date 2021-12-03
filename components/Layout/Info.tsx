@@ -33,7 +33,7 @@ export const FinancialInfo: React.FC<{ active?: boolean }> = ({ active }) => {
       </div>
       <p className="mb-12">
         The three numbers you will need to enter are at the bottom of the cheque
-        from left to right
+        from left to right.
       </p>
     </div>
   )
