@@ -6,7 +6,12 @@ export const Header = () => (
   <header className="border-b border-black/20 pb-10 -mx-4">
     <div className="container mx-auto">
       <div className="flex justify-between items-center">
-        <Image src="/gc-sig.png" width="360px" height="34px" />
+        <Image
+          src="/gc-sig.png"
+          width="360px"
+          height="34px"
+          alt="Government of Canada banner image"
+        />
         <label htmlFor="search-gc" className="block mb-2">
           <input
             type="search"
