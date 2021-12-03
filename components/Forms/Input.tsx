@@ -4,16 +4,15 @@ import { ErrorLabel } from '../Forms/validation/ErrorLabel'
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   label: string
-  customErrorMessage?: string
-  errorTimeout?: number
+  error?: string
 }
 
 export const Input: React.VFC<InputProps> = (props) => {
-  const errorMessage = props.customErrorMessage
+  const errorMessage = props.error
   return (
     <div>
       <label htmlFor={props.name}>
-        {props.customErrorMessage !== undefined && (
+        {props.error !== undefined && (
           <ErrorLabel errorMessage={errorMessage} />
         )}
         {props.required && <span className="text-danger">*</span>} {props.label}
@@ -23,7 +22,7 @@ export const Input: React.VFC<InputProps> = (props) => {
         name={props.name}
         {...props}
         className={`form-control ${
-          props.customErrorMessage !== undefined && 'border-danger'
+          props.error !== undefined && 'border-danger'
         }`}
       />
     </div>

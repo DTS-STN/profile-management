@@ -70,7 +70,7 @@ export default function Index({ data }) {
             disabled={loading && true}
             maxLength={6}
             minLength={6}
-            customErrorMessage={bError}
+            error={bError}
             required
           />
           <Input

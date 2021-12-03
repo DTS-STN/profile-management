@@ -2,20 +2,26 @@ import { useContext, useState } from 'react'
 import { LanguageContext } from '../Contexts'
 import { languageOptions, dictionaryList } from '../../i18n'
 
-type StorageChoice = 'session' | 'local'
+type StorageType = 'session' | 'local'
 
 // Stuff's a user's data into the client side storage of the developer's choosing
 export const useStorage = <T,>(
-  type: StorageChoice,
+  type: StorageType,
   key: string,
   initialValue: T
 ) => {
-  const store = type == 'local' ? window.localStorage : window.sessionStorage
+  // NextJs renders component serverside and there is no window available there
+  const isBrowser: boolean = ((): boolean => typeof window !== 'undefined')()
+
+  const store = type == 'local' ? 'localStorage' : 'sessionStorage'
 
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {
-      const item = store.getItem(key)
-      return item ? JSON.parse(item) : initialValue
+      if (isBrowser) {
+        const item = window[store].getItem(key)
+        return item ? JSON.parse(item) : initialValue
+      }
+      return ''
     } catch (error) {
       console.log(error)
       return initialValue
@@ -26,8 +32,9 @@ export const useStorage = <T,>(
     try {
       const valueToStore =
         value instanceof Function ? value(storedValue) : value
+
       setStoredValue(valueToStore)
-      store.setItem(key, JSON.stringify(valueToStore))
+      window[store].setItem(key, JSON.stringify(valueToStore))
     } catch (error) {
       console.log(error)
     }
@@ -35,7 +42,7 @@ export const useStorage = <T,>(
   return [storedValue, setValue] as const
 }
 
-// For text heavy components, just pull in the correct language's dictionary and use dot notation to get your values
+// For text heavy components, just pull in the correct language's dictionary and use dot notation to get your values in the component
 export const useTranslation = () => {
   const { userLanguage } = useContext(LanguageContext)
 
@@ -46,12 +53,6 @@ export const useTranslation = () => {
 // For one off text needs where you want a specific text value internationalized
 export const useInternationalization = (key: string) => {
   const { userLanguage } = useContext(LanguageContext)
-
-  return dictionaryList[userLanguage][key]
-}
-
-export const useIntlErrors = (key: string) => {
-  const { userLanguage } = useContext(LanguageContext)
-
+  if (dictionaryList[userLanguage] == undefined) return ''
   return dictionaryList[userLanguage][key]
 }
