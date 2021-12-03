@@ -1,4 +1,5 @@
 import styles from './Footer.module.css'
+import Image from 'next/image'
 
 export const Footer = () => (
   <footer className="text-[14px]">
@@ -62,6 +63,40 @@ export const Footer = () => (
         </ul>
       </div>
     </div>
-    <div className="bg-white h-14"></div>
+    <div className="my-8">
+      <div className="container mx-auto flex justify-between items-center">
+        <nav className="">
+          <ul className="flex flex-row list-disc space-x-6">
+            <li className="list-none">
+              <a href="#">Social media</a>
+            </li>
+
+            <li>
+              <a href="#">Mobile applications</a>
+            </li>
+
+            <li>
+              <a href="#">About Canada.ca</a>
+            </li>
+
+            <li>
+              <a href="#">Terms and conditions</a>
+            </li>
+
+            <li>
+              <a href="#">Privacy</a>
+            </li>
+          </ul>
+        </nav>
+        <div>
+          <Image
+            width="200px"
+            height="40px"
+            src="/wmms-blk.svg"
+            alt="Symbol of the Government of Canada"
+          />
+        </div>
+      </div>
+    </div>
   </footer>
 )
