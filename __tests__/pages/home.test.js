@@ -12,7 +12,8 @@ describe('index page', () => {
   nextRouter.useRouter = jest.fn()
   nextRouter.useRouter.mockImplementation(() => ({ pathname: '/' }))
 
-  it('should render', () => {
+  it('should render', async () => {
+    // Once API is ready, fetch here
     render(
       <Home
         data={{

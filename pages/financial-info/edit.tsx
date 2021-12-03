@@ -9,7 +9,7 @@ const BRANCH_NUMBER_LENGTH = 6
 const INST_NUMBER_LENGTH = 12
 const ACCOUNT_NUMBER_LENTH = 12
 
-export default function Index({ data }) {
+export default function Edit({ data }) {
   const [bError, setBError] = useState<string>(undefined)
   const [loading, setLoading] = useState<boolean>(false)
   const [branchNumber, setBranchNumber] = useState<string>(data.branchNumber)

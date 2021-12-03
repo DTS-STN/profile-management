@@ -1,7 +1,7 @@
 import { InputHTMLAttributes, useState } from 'react'
 import { ErrorLabel } from '../Forms/validation/ErrorLabel'
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   label: string
   error?: string
@@ -11,7 +11,7 @@ export const Input: React.VFC<InputProps> = (props) => {
   const errorMessage = props.error
   return (
     <div>
-      <label htmlFor={props.name}>
+      <label htmlFor={props.name} data-testid="input-label">
         {props.error !== undefined && (
           <ErrorLabel errorMessage={errorMessage} />
         )}
@@ -20,6 +20,7 @@ export const Input: React.VFC<InputProps> = (props) => {
       </label>
       <input
         name={props.name}
+        data-testid={props.name}
         {...props}
         className={`form-control ${
           props.error !== undefined && 'border-danger'
