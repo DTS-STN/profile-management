@@ -8,10 +8,7 @@ export default function Index({ data }) {
     <Layout data={data} title="Financial Information">
       <FinancialInfo />
       <div className="grid grid-cols-2 mb-14">
-        <form
-          action="#"
-          onSubmit={(e) => alert('submitted data: ' + e.target[0].value)}
-        >
+        <form noValidate>
           <Input
             type="text"
             name="branchNumber"

@@ -4,7 +4,7 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Index from '../../pages/financial-info/index'
-import * as Edit from '../../pages/financial-info/edit'
+import Edit from '../../pages/financial-info/edit'
 
 import * as nextRouter from 'next/router'
 
