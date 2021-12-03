@@ -10,7 +10,7 @@ export const FinancialInfo: React.FC<{ active?: boolean }> = ({ active }) => {
       <div className="flex justify-between items-start">
         <h2 className="h2 mb-8">Financial Information</h2>
         <button
-          className={`btn ${active ? 'btn-default' : 'btn-primary'}`}
+          className={`btn ${active ? 'btn-primary' : 'btn-default'}`}
           onClick={(e) => router.push('/financial-info/edit')}
         >
           Edit
