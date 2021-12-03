@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import { useStorage } from '../Hooks'
+import { dictionaryList } from '../../i18n'
 
-export const LanguageContext = React.createContext(null)
+export const LanguageContext = React.createContext({
+  userLanguage: 'en',
+  userLanguageChange: (selected) => void 0,
+})
 
 export function LanguageProvider({ children }) {
   const [userLanguage, setUserLanguage] = useStorage<string>(
