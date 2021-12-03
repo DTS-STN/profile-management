@@ -3,7 +3,8 @@
  */
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Home from '../../pages/index'
+import Index from '../../pages/financial-info/index'
+import * as Edit from '../../pages/financial-info/edit'
 
 import * as nextRouter from 'next/router'
 
@@ -13,9 +14,8 @@ describe('index page', () => {
   nextRouter.useRouter.mockImplementation(() => ({ pathname: '/' }))
 
   it('should render', async () => {
-    // Once API is ready, fetch here
     render(
-      <Home
+      <Index
         data={{
           id: 1,
           firstName: 'Sidra',
