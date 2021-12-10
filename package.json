@@ -1,5 +1,5 @@
 {
-  "name": "next-template",
+  "name": "profile-management",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -19,15 +19,19 @@
     "husky-pre-commit": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\" && git add -A ."
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.3.4",
+    "@types/jest": "^27.0.3",
     "next": "11.1.2",
     "prom-client": "^12.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.16.0",
     "@testing-library/dom": "^8.2.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
+    "@types/react": "^17.0.37",
     "autoprefixer": "^10.3.3",
     "axe-core": "^4.3.3",
     "babel-jest": "^27.1.0",
@@ -47,6 +51,7 @@
     "prettier": "^2.3.2",
     "react-test-renderer": "^17.0.2",
     "start-server-and-test": "^1.14.0",
-    "tailwindcss": "^2.2.9"
+    "tailwindcss": "^2.2.9",
+    "typescript": "^4.5.2"
   }
 }
