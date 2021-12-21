@@ -4,20 +4,38 @@ import { NavButtons } from '../../components/NavButtons'
 import { useState } from 'react'
 import { FinancialInfo } from '../../components/Layout/Info'
 import { useInternationalization } from '../../components/Hooks'
-
-const BRANCH_NUMBER_LENGTH = 6
-const INST_NUMBER_LENGTH = 12
-const ACCOUNT_NUMBER_LENTH = 12
+import { useRouter } from 'next/router'
+import { SubmitMessage } from '../../components/Forms/validation/SubmitMessage'
 
 export default function Edit({ data }) {
-  const [bError, setBError] = useState<string>(undefined)
-  const [loading, setLoading] = useState<boolean>(false)
-  const [branchNumber, setBranchNumber] = useState<string>(data.branchNumber)
-  const [institutionNumber, setInstitutionNumber] = useState<string>(
-    data.institutionNumber
+  const [financialInfo, setFinancialInfo] = useState(
+    data.userFinancialInfo ? data.userFinancialInfo : undefined
   )
-  const [accountNumber, setAccountNumber] = useState<string>(data.accountNumber)
+
+  const [institutionNumberError, setInstitutionNumberError] =
+    useState<string>(undefined)
+  const [branchNumberError, setBranchNumberError] = useState<string>(undefined)
+  const [accountNumberError, setAccountNumberError] =
+    useState<string>(undefined)
+
+  const [loading, setLoading] = useState<boolean>(false)
+  const [infoMessage, setInfoMessage] = useState<string>(undefined)
+  const [errorMessage, setErrorMessage] = useState<string>(undefined)
+
+  const [branchNumber, setBranchNumber] = useState<string>(
+    financialInfo ? financialInfo.transitNumber : ''
+  )
+  const [institutionNumber, setInstitutionNumber] = useState<string>(
+    financialInfo ? financialInfo.institutionNumber : ''
+  )
+  const [accountNumber, setAccountNumber] = useState<string>(
+    financialInfo ? financialInfo.accountNumber : ''
+  )
+
   const branch = useInternationalization('branch')
+  const institution = useInternationalization('institution')
+  const account = useInternationalization('account')
+  const submitErrorMsg = useInternationalization('submitError')
 
   const handleReset = async (e) => {
     e.preventDefault()
@@ -40,12 +58,52 @@ export default function Edit({ data }) {
     e.stopPropagation()
     try {
       setLoading(true)
-      // send request to Mo's API
-      // await ...
-      const error = {
-        branchNumber: 'this field is required',
+
+      const formData = {
+        institutionNumber: institutionNumber,
+        transitNumber: branchNumber,
+        accountNumber: accountNumber,
       }
-      setBError(error.branchNumber)
+
+      setBranchNumberError(undefined)
+      setAccountNumberError(undefined)
+      setInstitutionNumberError(undefined)
+
+      setInfoMessage(undefined)
+      setErrorMessage(undefined)
+      fetch(
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/financial/info/${userData}`,
+        {
+          method: !financialInfo ? 'POST' : 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      )
+        .then((response) => response.json())
+        .then((json) => {
+          if (json.code > 201) {
+            setErrorMessage(submitErrorMsg)
+          }
+          const messages = json.message.split(',')
+            ? json.message.split(',')
+            : json.message
+          messages.forEach((msg) => {
+            if (msg.includes('Branch')) {
+              setBranchNumberError(msg)
+            } else if (msg.includes('Account Number')) {
+              setAccountNumberError(msg)
+            } else if (msg.includes('Institution Number')) {
+              setInstitutionNumberError(msg)
+            } else {
+              setInfoMessage(msg)
+              if (json.status < 300) {
+                setFinancialInfo(json.data)
+              }
+            }
+          })
+        })
 
       //if you want the error to go away after 5s, just setTimeout for 5s and clear the error fields
     } catch (error) {
@@ -55,81 +113,102 @@ export default function Edit({ data }) {
       setLoading(false)
     }
   }
-
+  const router = useRouter()
+  const userData = router.query.id
   return (
     <Layout data={data} title="Financial Information">
       <FinancialInfo active={true} />
       <form onSubmit={handleSubmit} noValidate>
-        <div className="w-1/2 mb-14">
-          <Input
-            type="text"
-            name="branchNumber"
-            label={branch}
-            value={branchNumber}
-            onChange={(e) => setBranchNumber(e.target.value)}
-            disabled={loading && true}
-            maxLength={6}
-            minLength={6}
-            error={bError}
-            required
-          />
-          <Input
-            type="text"
-            name="institutionNumber"
-            label="Institution number"
-            value={institutionNumber}
-            onChange={(e) => setInstitutionNumber(e.target.value)}
-            disabled={loading && true}
-            maxLength={3}
-            minLength={3}
-            required
-          />
-          <Input
-            type="text"
-            name="accountNumber"
-            label="Account number"
-            value={accountNumber}
-            onChange={(e) => setAccountNumber(e.target.value)}
-            disabled={loading && true}
-            required
-          />
-        </div>
-        <div className="flex justify-between items-center mb-10">
-          <input
-            type="submit"
-            className="btn btn-primary mr-4"
-            value="Save"
-            disabled={loading && true}
-          />
-          <input
-            type="reset"
-            className="btn btn-default"
-            value="Clear all"
-            onClick={handleReset}
-            disabled={loading && true}
-          />
-        </div>
+        <fieldset className="fieldset">
+          <legend>
+            <h4 className="h4 mb-4">Enter or Modify Financial Information</h4>
+          </legend>
+          <div className="w-1/2 mb-14">
+            <Input
+              type="text"
+              name="branchNumber"
+              label={branch}
+              value={branchNumber}
+              onChange={(e) => setBranchNumber(e.target.value)}
+              disabled={loading && true}
+              maxLength={5}
+              minLength={5}
+              placeholder="Enter Branch Number"
+              error={branchNumberError}
+              required
+              autoFocus
+            />
+            <Input
+              type="text"
+              name="institutionNumber"
+              label={institution}
+              value={institutionNumber}
+              onChange={(e) => setInstitutionNumber(e.target.value)}
+              disabled={loading && true}
+              maxLength={3}
+              minLength={3}
+              placeholder="Enter Financial Institution Number"
+              error={institutionNumberError}
+              required
+            />
+            <Input
+              type="text"
+              name="accountNumber"
+              label={account}
+              value={accountNumber}
+              onChange={(e) => setAccountNumber(e.target.value)}
+              disabled={loading && true}
+              maxLength={13}
+              minLength={9}
+              placeholder="Enter Account Number"
+              error={accountNumberError}
+              required
+            />
+            <SubmitMessage
+              messageType={infoMessage !== undefined ? 'success' : ''}
+              message={infoMessage}
+            />
+            <SubmitMessage
+              messageType={errorMessage !== undefined ? 'error' : ''}
+              message={errorMessage}
+            />
+            <br></br>
+            <div className="flex justify-between items-center mb-10">
+              <input
+                type="submit"
+                className="btn btn-primary mr-4"
+                value="Save"
+                disabled={loading && true}
+              />
+              <input
+                type="reset"
+                className="btn btn-default"
+                value="Clear all"
+                onClick={handleReset}
+                disabled={loading && true}
+              />
+            </div>
+          </div>
+        </fieldset>
       </form>
-      <NavButtons fromLocation="/" toLocation="/contact-info" />
+      <br></br>
+      <NavButtons
+        fromLocation={`/personal-info?id=${userData}`}
+        toLocation={`/contact-info?id=${userData}`}
+      />
     </Layout>
   )
 }
 
 export const getServerSideProps = async (_context) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/financial/info/${_context.query.id}`
+  )
+  const data = await res.json()
+
   return {
     props: {
-      data: {
-        id: 1,
-        firstName: 'Sidra',
-        lastName: 'Doe',
-        middleName: 'K',
-        dob: '1989-01-23',
-        sin: '555 555 555',
-        maritalStatus: 'Married',
-        branchNumber: 786904,
-        institutionNumber: 222,
-        accountNumber: 1234123,
-      },
+      data: data,
     },
   }
 }

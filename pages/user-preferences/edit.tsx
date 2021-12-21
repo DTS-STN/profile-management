@@ -1,24 +1,48 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { Layout } from '../../components/Layout'
-import { UserPreferences } from '../../components/Layout/UserPreferences'
 import { NavButtons } from '../../components/NavButtons'
 import TimezonePicker from 'react-bootstrap-timezone-picker'
 import 'react-bootstrap-timezone-picker/dist/react-bootstrap-timezone-picker.min.css'
+import { ErrorLabel } from '../../components/Forms/validation/ErrorLabel'
+import { SubmitMessage } from '../../components/Forms/validation/SubmitMessage'
+import { useInternationalization } from '../../components/Hooks'
 
-export default function Index({ data }) {
+export default function Edit({ data }) {
   const router = useRouter()
   const userData = router.query.id
-  const userPref = data.userPref
 
-  const [timezone, setTimezone] = useState(
+  const submitErrorMsg = useInternationalization('submitError')
+
+  const [loading, setLoading] = useState<boolean>(false)
+
+  const [infoMessage, setInfoMessage] = useState<string>(undefined)
+  const [errorMessage, setErrorMessage] = useState<string>(undefined)
+
+  const [userPref, setUserPref] = useState(
+    data.userPref ? data.userPref : undefined
+  )
+
+  const [webLanguageCodeError, setWebLanguageCodeError] =
+    useState<string>(undefined)
+  const [correspondenceLanguageCodeError, setCorrespondenceLanguageCodeError] =
+    useState<string>(undefined)
+  const [brailleTtyKeyboardError, setBrailleTtyKeyboardError] =
+    useState<string>(undefined)
+  const [preferredCurrencyCodeError, setPreferredCurrencyCodeError] =
+    useState<string>(undefined)
+  const [timeFormatCodeError, setTimeFormatCodeError] =
+    useState<string>(undefined)
+  const [timezoneError, setTimezoneError] = useState<string>(undefined)
+
+  const [timeZoneCode, setTimeZoneCode] = useState(
     userPref && userPref.timeZoneCode
       ? userPref.timeZoneCode
       : Intl.DateTimeFormat().resolvedOptions().timeZone
   )
 
-  const changeTimezoneHandler = (timezone) => {
-    setTimezone(timezone)
+  const changeTimezoneHandler = (timeZoneCode) => {
+    setTimeZoneCode(timeZoneCode)
   }
 
   const [webLanguageCode, setWebLanguageCode] = useState<number>(
@@ -63,16 +87,93 @@ export default function Index({ data }) {
     setTimeFormatCode(timeFormatCode.target.value)
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    try {
+      setLoading(true)
+
+      setWebLanguageCodeError(undefined)
+      setCorrespondenceLanguageCodeError(undefined)
+      setBrailleTtyKeyboardError(undefined)
+      setPreferredCurrencyCodeError(undefined)
+      setTimeFormatCodeError(undefined)
+      setTimezoneError(undefined)
+      setInfoMessage(undefined)
+      setErrorMessage(undefined)
+
+      const formData = {
+        webLanguageCode,
+        correspondenceLanguageCode,
+        brailleTtyKeyboard:
+          brailleTtyKeyboard == 1
+            ? true
+            : brailleTtyKeyboard == 0
+            ? false
+            : null,
+        preferredCurrencyCode,
+        timeFormatCode,
+        timeZoneCode,
+      }
+      fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/user/pref/${userData}`, {
+        method: !userPref ? 'POST' : 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          if (json.code > 201) {
+            setErrorMessage(submitErrorMsg)
+          }
+          const messages = json.message.split(',')
+            ? json.message.split(',')
+            : json.message
+          messages.forEach((msg) => {
+            if (msg.includes('Web language')) {
+              setWebLanguageCodeError(msg)
+            } else if (msg.includes('Communication language')) {
+              setCorrespondenceLanguageCodeError(msg)
+            } else if (msg.includes('Braille/TTY')) {
+              setBrailleTtyKeyboardError(msg)
+            } else if (msg.includes('Preferred Currency')) {
+              setPreferredCurrencyCodeError(msg)
+            } else if (msg.includes('Time Format Code')) {
+              setTimeFormatCodeError(msg)
+            } else if (msg.includes('Time Zone')) {
+              setTimezoneError(msg)
+            } else {
+              setInfoMessage(msg)
+              if (json.status < 300) {
+                setUserPref(json.data)
+              }
+            }
+          })
+        })
+
+      //if you want the error to go away after 5s, just setTimeout for 5s and clear the error fields
+    } catch (error) {
+      setLoading(false)
+      console.log('An error occurred while submitting the form.' + error)
+    } finally {
+      setLoading(false)
+    }
+  }
   return (
     <Layout data={data} title="User Preferences">
-      <UserPreferences />
-      <div className="grid grid-cols-2 mb-14">
-        <form noValidate>
-          <fieldset className="fieldset">
-            <legend>
-              <h4 className="h4 mb-4">User Preferences</h4>
-            </legend>
+      <form onSubmit={handleSubmit} noValidate>
+        <fieldset className="fieldset">
+          <legend>
+            <h4 className="h4 mb-4">User Preferences</h4>
+          </legend>
+          <div className="w-1/2 mb-14">
             <section>
+              {correspondenceLanguageCodeError ? (
+                <ErrorLabel errorMessage={webLanguageCodeError} />
+              ) : (
+                ''
+              )}
               <label>What is your preferred website browsing language?</label>
               <br></br>
               <input
@@ -83,7 +184,6 @@ export default function Index({ data }) {
                 checked={webLanguageCode == 1}
                 onChange={onWebLanguageChanged}
                 className="ml-4"
-                disabled
               />
               <span> English</span>
               <input
@@ -94,12 +194,16 @@ export default function Index({ data }) {
                 onChange={onWebLanguageChanged}
                 name="webLanguage"
                 className="ml-8"
-                disabled
               />
               <span> French</span>
             </section>
 
             <section>
+              {correspondenceLanguageCodeError ? (
+                <ErrorLabel errorMessage={correspondenceLanguageCodeError} />
+              ) : (
+                ''
+              )}
               <label htmlFor="webLanguage">
                 What is your preferred language for communication?
               </label>
@@ -112,7 +216,6 @@ export default function Index({ data }) {
                 checked={correspondenceLanguageCode == 1}
                 onChange={onCorrespondenceLanguageCodeChanged}
                 className="ml-4"
-                disabled
               />
               <span> English</span>
               <input
@@ -123,11 +226,15 @@ export default function Index({ data }) {
                 onChange={onCorrespondenceLanguageCodeChanged}
                 name="correspondenceLanguage"
                 className="ml-8"
-                disabled
               />
               <span> French</span>
             </section>
             <section>
+              {brailleTtyKeyboardError ? (
+                <ErrorLabel errorMessage={brailleTtyKeyboardError} />
+              ) : (
+                ''
+              )}
               <label htmlFor="brailleTtyKeyboard">
                 Do you use braille display/TTY keyboard?
               </label>
@@ -140,7 +247,6 @@ export default function Index({ data }) {
                 checked={brailleTtyKeyboard == 1}
                 onChange={onBrailleTtyKeyboardChanged}
                 className="ml-4"
-                disabled
               />
               <span> Yes</span>
               <input
@@ -151,11 +257,15 @@ export default function Index({ data }) {
                 onChange={onBrailleTtyKeyboardChanged}
                 name="brailleTtyKeyboard"
                 className="ml-14"
-                disabled
               />
               <span> No</span>
             </section>
             <section>
+              {preferredCurrencyCodeError ? (
+                <ErrorLabel errorMessage={preferredCurrencyCodeError} />
+              ) : (
+                ''
+              )}
               <label htmlFor="currency">
                 What financial currency do you prefer?
               </label>
@@ -168,7 +278,6 @@ export default function Index({ data }) {
                 checked={preferredCurrencyCode == 1}
                 onChange={onPreferredCurrencyCodeChanged}
                 className="ml-4"
-                disabled
               />
               <span> CAD</span>
               <input
@@ -179,11 +288,15 @@ export default function Index({ data }) {
                 onChange={onPreferredCurrencyCodeChanged}
                 name="currency"
                 className="ml-12"
-                disabled
               />
               <span> USD</span>
             </section>
             <section>
+              {timeFormatCodeError ? (
+                <ErrorLabel errorMessage={timeFormatCodeError} />
+              ) : (
+                ''
+              )}
               <label htmlFor="timeFormat">
                 What time format do you prefer?
               </label>
@@ -196,7 +309,6 @@ export default function Index({ data }) {
                 checked={timeFormatCode == 1}
                 onChange={onTimeFormatCodeChanged}
                 className="ml-4"
-                disabled
               />
               <span> 12-Hour</span>
               <input
@@ -207,24 +319,41 @@ export default function Index({ data }) {
                 onChange={onTimeFormatCodeChanged}
                 name="timeFormat"
                 className="ml-6"
-                disabled
               />
               <span> 24-Hour</span>
             </section>
             <section>
+              {timezoneError ? <ErrorLabel errorMessage={timezoneError} /> : ''}
               <label htmlFor="timeZone">What time zone are you in?</label>
               <br></br>
               <TimezonePicker
                 absolute={false}
                 placeholder="Select a timezone..."
-                value={timezone}
+                value={timeZoneCode}
                 onChange={changeTimezoneHandler}
-                disabled
               />
             </section>
-          </fieldset>
-        </form>
-      </div>
+            <SubmitMessage
+              messageType={infoMessage !== undefined ? 'success' : ''}
+              message={infoMessage}
+            />
+            <SubmitMessage
+              messageType={errorMessage !== undefined ? 'error' : ''}
+              message={errorMessage}
+            />
+            <br></br>
+            <div className="flex justify-between items-center mb-10">
+              <input
+                type="submit"
+                className="btn btn-primary mr-4"
+                value="Save"
+                disabled={loading && true}
+              />
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <br></br>
       <NavButtons
         fromLocation={`/contact-info?id=${userData}`}
         toLocation={`/user-preferences?id=${userData}`}
