@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1640961188365" clover="3.2.0">
+  <project timestamp="1640961188365" name="All files">
+    <metrics statements="108" coveredstatements="51" conditionals="42" coveredconditionals="22" methods="41" coveredmethods="15" elements="191" coveredelements="88" complexity="0" loc="108" ncloc="108" packages="13" files="20" classes="20"/>
+    <package name="components.Breadcrumbs">
+      <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <file name="BreadcrumbItem.tsx" path="/home/runner/work/profile-management/profile-management/components/Breadcrumbs/BreadcrumbItem.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="9" type="stmt"/>
+      </file>
+      <file name="index.tsx" path="/home/runner/work/profile-management/profile-management/components/Breadcrumbs/index.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="8" count="9" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Contexts">
+      <metrics statements="5" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <file name="index.tsx" path="/home/runner/work/profile-management/profile-management/components/Contexts/index.tsx">
+        <metrics statements="5" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Forms">
+      <metrics statements="3" coveredstatements="3" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+      <file name="Input.tsx" path="/home/runner/work/profile-management/profile-management/components/Forms/Input.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="14" type="stmt"/>
+        <line num="12" count="14" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Forms.validation">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="ErrorLabel.tsx" path="/home/runner/work/profile-management/profile-management/components/Forms/validation/ErrorLabel.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Hooks">
+      <metrics statements="25" coveredstatements="6" conditionals="10" coveredconditionals="1" methods="6" coveredmethods="1"/>
+      <file name="index.tsx" path="/home/runner/work/profile-management/profile-management/components/Hooks/index.tsx">
+        <metrics statements="25" coveredstatements="6" conditionals="10" coveredconditionals="1" methods="6" coveredmethods="1"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="55" count="13" type="stmt"/>
+        <line num="56" count="13" type="cond" truecount="1" falsecount="1"/>
+        <line num="57" count="13" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Layout">
+      <metrics statements="15" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="4"/>
+      <file name="Footer.tsx" path="/home/runner/work/profile-management/profile-management/components/Layout/Footer.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+      </file>
+      <file name="Header.tsx" path="/home/runner/work/profile-management/profile-management/components/Layout/Header.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+      </file>
+      <file name="Info.tsx" path="/home/runner/work/profile-management/profile-management/components/Layout/Info.tsx">
+        <metrics statements="4" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+      </file>
+      <file name="index.tsx" path="/home/runner/work/profile-management/profile-management/components/Layout/index.tsx">
+        <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.NavButtons">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.tsx" path="/home/runner/work/profile-management/profile-management/components/NavButtons/index.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.NavigationHeader">
+      <metrics statements="2" coveredstatements="2" conditionals="8" coveredconditionals="4" methods="1" coveredmethods="1"/>
+      <file name="index.tsx" path="/home/runner/work/profile-management/profile-management/components/NavigationHeader/index.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="8" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages">
+      <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
+      <file name="_app.tsx" path="/home/runner/work/profile-management/profile-management/pages/_app.tsx">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="6" count="0" type="stmt"/>
+      </file>
+      <file name="index.tsx" path="/home/runner/work/profile-management/profile-management/pages/index.tsx">
+        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.api">
+      <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="hello.ts" path="/home/runner/work/profile-management/profile-management/pages/api/hello.ts">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+      <file name="metrics.ts" path="/home/runner/work/profile-management/profile-management/pages/api/metrics.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.contact-info">
+      <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="index.tsx" path="/home/runner/work/profile-management/profile-management/pages/contact-info/index.tsx">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.financial-info">
+      <metrics statements="34" coveredstatements="15" conditionals="12" coveredconditionals="5" methods="9" coveredmethods="2"/>
+      <file name="edit.tsx" path="/home/runner/work/profile-management/profile-management/pages/financial-info/edit.tsx">
+        <metrics statements="31" coveredstatements="13" conditionals="12" coveredconditionals="5" methods="7" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="118" count="1" type="stmt"/>
+        <line num="119" count="0" type="stmt"/>
+      </file>
+      <file name="index.tsx" path="/home/runner/work/profile-management/profile-management/pages/financial-info/index.tsx">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.user-preferences">
+      <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="index.tsx" path="/home/runner/work/profile-management/profile-management/pages/user-preferences/index.tsx">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
