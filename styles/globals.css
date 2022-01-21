@@ -90,7 +90,7 @@
   }
 
   .fieldset {
-    border: 1px solid lightgray;
+    border: 0px solid lightgray;
     margin:auto;
     padding:15px; 
     width: 1200px;
@@ -102,5 +102,6 @@
     padding:15px; 
     width: 600px;
   }
+
   
 }

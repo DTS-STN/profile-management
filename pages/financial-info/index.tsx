@@ -5,6 +5,7 @@ import { FinancialInfo } from '../../components/Layout/Info'
 import { useRouter } from 'next/router'
 import { useInternationalization } from '../../components/Hooks'
 import { useState } from 'react'
+import { CommonFinancialInfo } from './CommonFinancialInfo'
 
 export default function Index({ data }) {
   const router = useRouter()
@@ -38,46 +39,7 @@ export default function Index({ data }) {
   const submitErrorMsg = useInternationalization('submitError')
 
   return (
-    <Layout data={data} title="Financial Information">
-      <FinancialInfo />
-
-      <form noValidate>
-        <fieldset className="fieldset">
-          <legend>
-            <h4 className="h4 mb-4">Financial Information</h4>
-          </legend>
-          <div className="w-1/2 mb-14">
-            <Input
-              type="text"
-              name="transitNumber"
-              label="Branch Number"
-              value={branchNumber}
-              size={10}
-              disabled
-            />
-            <Input
-              type="text"
-              name="institutionNumber"
-              label="Financial Institution Number"
-              value={institutionNumber}
-              disabled
-            />
-            <Input
-              type="text"
-              name="accountNumber"
-              label="Account Number"
-              value={accountNumber}
-              disabled
-            />
-          </div>
-        </fieldset>
-      </form>
-      <br></br>
-      <NavButtons
-        fromLocation={`/personal-info?id=${userData}`}
-        toLocation={`/contact-info?id=${userData}`}
-      />
-    </Layout>
+    <CommonFinancialInfo data={data} isDisabled={true}></CommonFinancialInfo>
   )
 }
 

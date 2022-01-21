@@ -34,6 +34,7 @@ export default function Home({ data }) {
             </fieldset>
           </form>
         </div>
+
         <NavButtons
           fromLocation="#"
           toLocation={userData ? `/personal-info?id=${userData}` : '/'}
@@ -51,10 +52,10 @@ export const getServerSideProps = async (_context: any) => {
 
   var users = []
 
-  const options = data.userPersonalInfos.forEach(
-    (user: { uuid: any; lastName: string; firstName: string }) => {
+  const options = data.forEach(
+    (user: { _id: any; lastName: string; firstName: string }) => {
       users.push({
-        value: user.uuid,
+        value: user._id,
         label: user.lastName + ', ' + user.firstName,
       })
     }
