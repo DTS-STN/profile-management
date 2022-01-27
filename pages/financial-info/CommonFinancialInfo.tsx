@@ -4,8 +4,9 @@ import { Input } from '../../components/Forms/Input'
 import { SubmitMessage } from '../../components/Forms/validation/SubmitMessage'
 import { useInternationalization } from '../../components/Hooks'
 import { Layout } from '../../components/Layout'
-import { FinancialInfo } from '../../components/Layout/Info'
+import { FinancialInfo } from '../../components/Layout/FinancialInfo'
 import { NavButtons } from '../../components/NavButtons'
+import Head from 'next/head'
 
 export const CommonFinancialInfo: React.FC<{
   data: any
@@ -121,15 +122,20 @@ export const CommonFinancialInfo: React.FC<{
     }
   }
   return (
-    <Layout data={data} title="Financial Information">
-      {isDisabled ? <FinancialInfo active={true} /> : ''}
+    <div>
+      <Head>
+        <title>Financial Information</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Layout data={data} title="Financial Information">
+        {isDisabled ? (
+          <FinancialInfo active={true} />
+        ) : (
+          <FinancialInfo active={false} />
+        )}
 
-      <form onSubmit={handleSubmit} noValidate>
-        <fieldset className="fieldset">
-          <legend>
-            <h4 className="h4 mb-4">Enter or Modify Financial Information</h4>
-          </legend>
-          <div className="w-1/5 md:w-2/5 lg:w-1/2">
+        <form onSubmit={handleSubmit} noValidate>
+          <div className="flex-auto sm:w-2/3 md:max-w-xl lg:w-1/2 ml-2">
             <Input
               type="text"
               name="branchNumber"
@@ -182,7 +188,7 @@ export const CommonFinancialInfo: React.FC<{
             {isDisabled ? (
               ''
             ) : (
-              <div className="flex justify-between items-center mb-10">
+              <div className="justify-between max-w-xl lg:w-1/2 ml-2">
                 <input
                   type="submit"
                   className="btn btn-primary mr-4"
@@ -199,13 +205,14 @@ export const CommonFinancialInfo: React.FC<{
               </div>
             )}
           </div>
-        </fieldset>
-      </form>
-      <br></br>
-      <NavButtons
-        fromLocation={`/personal-info?id=${userData}`}
-        toLocation={`/contact-info?id=${userData}`}
-      />
-    </Layout>
+        </form>
+
+        <br></br>
+        <NavButtons
+          fromLocation={`/personal-info?id=${userData}`}
+          toLocation={`/contact-info?id=${userData}`}
+        />
+      </Layout>
+    </div>
   )
 }

@@ -7,7 +7,7 @@ export const UserPreferences: React.FC<{ active?: boolean }> = ({ active }) => {
   return (
     <div>
       <div className="flex justify-between items-start">
-        <h2 className="h2 mb-8"></h2>
+        <h2 className="h2 mb-8">User Preferences</h2>
         <button
           className={`btn ${active ? 'btn-primary' : 'btn-default'}`}
           onClick={(e) => router.push(`/user-preferences/edit?id=${userData}`)}

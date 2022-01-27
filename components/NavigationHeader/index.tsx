@@ -6,7 +6,7 @@ export const NavigationHeader: React.VFC<{ path: string }> = ({ path }) => {
   const router = useRouter()
   const userData = router.query.id
   return (
-    <ol className="grid grid-cols-3 gap-x-6 gap-y-2.5">
+    <ol className="grid grid-cols-2 gap-x-6 gap-y-2.5">
       <Link href={`/personal-info?id=${userData}`} passHref>
         <li
           className={`rounded py-3 px-6 cursor-pointer ${

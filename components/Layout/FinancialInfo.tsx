@@ -23,7 +23,7 @@ export const FinancialInfo: React.FC<{ active?: boolean }> = ({ active }) => {
         contacting your branch. You can also find these numbers on any void
         cheque.
       </p>
-      <div className="flex justify-center items-center my-8">
+      <div className="flex justify-left items-center my-8">
         <Image
           src="/check.png"
           width="533px"

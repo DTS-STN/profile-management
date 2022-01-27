@@ -45,7 +45,7 @@ export default function Index({ data }) {
 
 export const getServerSideProps = async (_context) => {
   const res = await fetch(
-    `${process.env.API_SERVER_BASE_URL}/user/financial/info/${_context.query.id}`
+    `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/financial/info/${_context.query.id}`
   )
   const data = await res.json()
 

@@ -46,20 +46,18 @@ export default function Home({ data }) {
 
 export const getServerSideProps = async (_context: any) => {
   const res = await fetch(
-    `${process.env.API_SERVER_BASE_URL}/user/personal/Info/`
+    `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/personal/Info/`
   )
   const data = await res.json()
 
-  var users = []
+  let users = []
 
-  const options = data.forEach(
-    (user: { _id: any; lastName: string; firstName: string }) => {
-      users.push({
-        value: user._id,
-        label: user.lastName + ', ' + user.firstName,
-      })
-    }
-  )
+  data.forEach((user: { _id: any; lastName: string; firstName: string }) => {
+    users.push({
+      value: user._id,
+      label: user.lastName + ', ' + user.firstName,
+    })
+  })
 
   return {
     props: {

@@ -13,7 +13,11 @@ export const Input: React.VFC<InputProps> = (props) => {
   const required = useInternationalization('req')
   return (
     <div>
-      <label htmlFor={props.name} data-testid="input-label">
+      <label
+        htmlFor={props.name}
+        data-testid="input-label"
+        className="text-2xl lg:text-base"
+      >
         {props.error !== undefined && (
           <ErrorLabel errorMessage={errorMessage} />
         )}

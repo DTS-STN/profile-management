@@ -19,7 +19,7 @@ export default function Edit({ data }) {
 
 export const getServerSideProps = async (_context: any) => {
   const res = await fetch(
-    `${process.env.API_SERVER_BASE_URL}/user/contact/info/${_context.query.id}`
+    `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/contact/info/${_context.query.id}`
   )
   const data = await res.json()
   return {

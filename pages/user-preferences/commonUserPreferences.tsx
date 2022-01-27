@@ -166,237 +166,234 @@ export const CommonUserPreferences: React.FC<{
   }
   return (
     <Layout data={data} title="User Preferences">
-      {isDisabled ? <UserPreferences /> : ''}
+      {isDisabled ? (
+        <UserPreferences active={true} />
+      ) : (
+        <UserPreferences active={false} />
+      )}
       <form onSubmit={handleSubmit} noValidate>
-        <fieldset className="fieldset">
-          <legend>
-            <h4 className="h4 mb-4">User Preferences</h4>
-          </legend>
-          <div className="w-1/2 mb-14">
-            <section>
-              {correspondenceLanguageCodeError ? (
-                <ErrorLabel errorMessage={webLanguageCodeError} />
-              ) : (
-                ''
-              )}
-              <label>What is your preferred website browsing language?</label>
-              <ul>
-                <li>
-                  <input
-                    type="radio"
-                    id="webLanguage1"
-                    name="webLanguage"
-                    value="1"
-                    checked={webLanguageCode == 1}
-                    onChange={onWebLanguageChanged}
-                    className="ml-4"
-                    disabled={isDisabled}
-                  />
-                  <span> English</span>
-                </li>
-                <li>
-                  <input
-                    type="radio"
-                    id="webLanguage2"
-                    value="2"
-                    checked={webLanguageCode == 2}
-                    onChange={onWebLanguageChanged}
-                    name="webLanguage"
-                    className="ml-4"
-                    disabled={isDisabled}
-                  />
-                  <span> French</span>
-                </li>
-              </ul>
-            </section>
-
-            <section>
-              {correspondenceLanguageCodeError ? (
-                <ErrorLabel errorMessage={correspondenceLanguageCodeError} />
-              ) : (
-                ''
-              )}
-              <label htmlFor="webLanguage">
-                What is your preferred language for communication?
-              </label>
-              <ul>
-                <li>
-                  <input
-                    type="radio"
-                    id="correspondenceLanguage1"
-                    name="correspondenceLanguage"
-                    value="1"
-                    checked={correspondenceLanguageCode == 1}
-                    onChange={onCorrespondenceLanguageCodeChanged}
-                    className="ml-4"
-                    disabled={isDisabled}
-                  />
-                  <span> English</span>
-                </li>
-                <li>
-                  <input
-                    type="radio"
-                    id="correspondenceLanguage2"
-                    value="2"
-                    checked={correspondenceLanguageCode == 2}
-                    onChange={onCorrespondenceLanguageCodeChanged}
-                    name="correspondenceLanguage"
-                    className="ml-4"
-                    disabled={isDisabled}
-                  />
-                  <span> French</span>
-                </li>
-              </ul>
-            </section>
-            <section>
-              {brailleTtyKeyboardError ? (
-                <ErrorLabel errorMessage={brailleTtyKeyboardError} />
-              ) : (
-                ''
-              )}
-              <label htmlFor="brailleTtyKeyboard">
-                Do you use braille display/TTY keyboard?
-              </label>
-              <ul>
-                <li>
-                  <input
-                    type="radio"
-                    id="brailleTtyKeyboard1"
-                    name="brailleTtyKeyboard"
-                    value="1"
-                    checked={brailleTtyKeyboard == 1}
-                    onChange={onBrailleTtyKeyboardChanged}
-                    className="ml-4"
-                    disabled={isDisabled}
-                  />
-                  <span> Yes</span>
-                </li>
-                <li>
-                  <input
-                    type="radio"
-                    id="brailleTtyKeyboard2"
-                    value="0"
-                    checked={brailleTtyKeyboard == 0}
-                    onChange={onBrailleTtyKeyboardChanged}
-                    name="brailleTtyKeyboard"
-                    className="ml-4"
-                    disabled={isDisabled}
-                  />
-                  <span> No</span>
-                </li>
-              </ul>
-            </section>
-            <section>
-              {preferredCurrencyCodeError ? (
-                <ErrorLabel errorMessage={preferredCurrencyCodeError} />
-              ) : (
-                ''
-              )}
-              <label htmlFor="currency">
-                What financial currency do you prefer?
-              </label>
-              <ul>
-                <li>
-                  <input
-                    type="radio"
-                    id="currency1"
-                    name="currency"
-                    value="1"
-                    checked={preferredCurrencyCode == 1}
-                    onChange={onPreferredCurrencyCodeChanged}
-                    className="ml-4"
-                    disabled={isDisabled}
-                  />
-                  <span> CAD</span>
-                </li>
-                <li>
-                  <input
-                    type="radio"
-                    id="currency2"
-                    value="2"
-                    checked={preferredCurrencyCode == 2}
-                    onChange={onPreferredCurrencyCodeChanged}
-                    name="currency"
-                    className="ml-4"
-                    disabled={isDisabled}
-                  />
-                  <span> USD</span>
-                </li>
-              </ul>
-            </section>
-            <section>
-              {timeFormatCodeError ? (
-                <ErrorLabel errorMessage={timeFormatCodeError} />
-              ) : (
-                ''
-              )}
-              <label htmlFor="timeFormat">
-                What time format do you prefer?
-              </label>
-              <ul>
-                <li>
-                  <input
-                    type="radio"
-                    id="timeFormat12"
-                    name="timeFormat"
-                    value="1"
-                    checked={timeFormatCode == 1}
-                    onChange={onTimeFormatCodeChanged}
-                    className="ml-4"
-                    disabled={isDisabled}
-                  />
-                  <span> 12-Hour</span>
-                </li>
-                <li>
-                  <input
-                    type="radio"
-                    id="timeFormat24"
-                    value="2"
-                    checked={timeFormatCode == 2}
-                    onChange={onTimeFormatCodeChanged}
-                    name="timeFormat"
-                    className="ml-4"
-                    disabled={isDisabled}
-                  />
-                  <span> 24-Hour</span>
-                </li>
-              </ul>
-            </section>
-            <section>
-              {timezoneError ? <ErrorLabel errorMessage={timezoneError} /> : ''}
-              <label htmlFor="timeZone">What time zone are you in?</label>
-              <br></br>
-              <TimezonePicker
-                absolute={false}
-                placeholder="Select a timezone..."
-                value={timeZoneCode}
-                onChange={changeTimezoneHandler}
-                disabled={isDisabled}
-              />
-            </section>
-            <SubmitMessage
-              messageType={infoMessage !== undefined ? 'success' : ''}
-              message={infoMessage}
-            />
-            <SubmitMessage
-              messageType={errorMessage !== undefined ? 'error' : ''}
-              message={errorMessage}
-            />
-            <br></br>
-            {isDisabled ? (
-              ''
+        <div className="flex-auto sm:w-2/3 md:max-w-xl lg:w-1/2 ml-2">
+          <section>
+            {correspondenceLanguageCodeError ? (
+              <ErrorLabel errorMessage={webLanguageCodeError} />
             ) : (
-              <div className="flex justify-between items-center mb-10">
-                <input
-                  type="submit"
-                  className="btn btn-primary mr-4"
-                  value="Save"
-                  disabled={loading && true}
-                />
-              </div>
+              ''
             )}
-          </div>
-        </fieldset>
+            <label>What is your preferred website browsing language?</label>
+            <ul>
+              <li>
+                <input
+                  type="radio"
+                  id="webLanguage1"
+                  name="webLanguage"
+                  value="1"
+                  checked={webLanguageCode == 1}
+                  onChange={onWebLanguageChanged}
+                  className="ml-4"
+                  disabled={isDisabled}
+                />
+                <span> English</span>
+              </li>
+              <li>
+                <input
+                  type="radio"
+                  id="webLanguage2"
+                  value="2"
+                  checked={webLanguageCode == 2}
+                  onChange={onWebLanguageChanged}
+                  name="webLanguage"
+                  className="ml-4 mb-4"
+                  disabled={isDisabled}
+                />
+                <span> French</span>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            {correspondenceLanguageCodeError ? (
+              <ErrorLabel errorMessage={correspondenceLanguageCodeError} />
+            ) : (
+              ''
+            )}
+            <label htmlFor="webLanguage">
+              What is your preferred language for communication?
+            </label>
+            <ul>
+              <li>
+                <input
+                  type="radio"
+                  id="correspondenceLanguage1"
+                  name="correspondenceLanguage"
+                  value="1"
+                  checked={correspondenceLanguageCode == 1}
+                  onChange={onCorrespondenceLanguageCodeChanged}
+                  className="ml-4"
+                  disabled={isDisabled}
+                />
+                <span> English</span>
+              </li>
+              <li>
+                <input
+                  type="radio"
+                  id="correspondenceLanguage2"
+                  value="2"
+                  checked={correspondenceLanguageCode == 2}
+                  onChange={onCorrespondenceLanguageCodeChanged}
+                  name="correspondenceLanguage"
+                  className="ml-4 mb-4"
+                  disabled={isDisabled}
+                />
+                <span> French</span>
+              </li>
+            </ul>
+          </section>
+          <section>
+            {brailleTtyKeyboardError ? (
+              <ErrorLabel errorMessage={brailleTtyKeyboardError} />
+            ) : (
+              ''
+            )}
+            <label htmlFor="brailleTtyKeyboard">
+              Do you use braille display/TTY keyboard?
+            </label>
+            <ul>
+              <li>
+                <input
+                  type="radio"
+                  id="brailleTtyKeyboard1"
+                  name="brailleTtyKeyboard"
+                  value="1"
+                  checked={brailleTtyKeyboard == 1}
+                  onChange={onBrailleTtyKeyboardChanged}
+                  className="ml-4"
+                  disabled={isDisabled}
+                />
+                <span> Yes</span>
+              </li>
+              <li>
+                <input
+                  type="radio"
+                  id="brailleTtyKeyboard2"
+                  value="0"
+                  checked={brailleTtyKeyboard == 0}
+                  onChange={onBrailleTtyKeyboardChanged}
+                  name="brailleTtyKeyboard"
+                  className="ml-4  mb-4"
+                  disabled={isDisabled}
+                />
+                <span> No</span>
+              </li>
+            </ul>
+          </section>
+          <section>
+            {preferredCurrencyCodeError ? (
+              <ErrorLabel errorMessage={preferredCurrencyCodeError} />
+            ) : (
+              ''
+            )}
+            <label htmlFor="currency">
+              What financial currency do you prefer?
+            </label>
+            <ul>
+              <li>
+                <input
+                  type="radio"
+                  id="currency1"
+                  name="currency"
+                  value="1"
+                  checked={preferredCurrencyCode == 1}
+                  onChange={onPreferredCurrencyCodeChanged}
+                  className="ml-4"
+                  disabled={isDisabled}
+                />
+                <span> CAD</span>
+              </li>
+              <li>
+                <input
+                  type="radio"
+                  id="currency2"
+                  value="2"
+                  checked={preferredCurrencyCode == 2}
+                  onChange={onPreferredCurrencyCodeChanged}
+                  name="currency"
+                  className="ml-4 mb-4"
+                  disabled={isDisabled}
+                />
+                <span> USD</span>
+              </li>
+            </ul>
+          </section>
+          <section>
+            {timeFormatCodeError ? (
+              <ErrorLabel errorMessage={timeFormatCodeError} />
+            ) : (
+              ''
+            )}
+            <label htmlFor="timeFormat">What time format do you prefer?</label>
+            <ul>
+              <li>
+                <input
+                  type="radio"
+                  id="timeFormat12"
+                  name="timeFormat"
+                  value="1"
+                  checked={timeFormatCode == 1}
+                  onChange={onTimeFormatCodeChanged}
+                  className="ml-4"
+                  disabled={isDisabled}
+                />
+                <span> 12-Hour</span>
+              </li>
+              <li>
+                <input
+                  type="radio"
+                  id="timeFormat24"
+                  value="2"
+                  checked={timeFormatCode == 2}
+                  onChange={onTimeFormatCodeChanged}
+                  name="timeFormat"
+                  className="ml-4  mb-4"
+                  disabled={isDisabled}
+                />
+                <span> 24-Hour</span>
+              </li>
+            </ul>
+          </section>
+          <section>
+            {timezoneError ? <ErrorLabel errorMessage={timezoneError} /> : ''}
+            <label htmlFor="timeZone">What time zone are you in?</label>
+            <br></br>
+            <TimezonePicker
+              absolute={false}
+              placeholder="Select a timezone..."
+              value={timeZoneCode}
+              onChange={changeTimezoneHandler}
+              disabled={isDisabled}
+            />
+          </section>
+          <SubmitMessage
+            messageType={infoMessage !== undefined ? 'success' : ''}
+            message={infoMessage}
+          />
+          <SubmitMessage
+            messageType={errorMessage !== undefined ? 'error' : ''}
+            message={errorMessage}
+          />
+          <br></br>
+          {isDisabled ? (
+            ''
+          ) : (
+            <div className="flex justify-between items-center mb-10">
+              <input
+                type="submit"
+                className="btn btn-primary mr-4"
+                value="Save"
+                disabled={loading && true}
+              />
+            </div>
+          )}
+        </div>
       </form>
       <br></br>
       <NavButtons
