@@ -45,7 +45,7 @@ export const Layout: React.VFC<{
           <h1 className="h1 my-8 mb-10">
             {`${
               router.pathname !== '/' && data.firstName
-                ? useInternationalization('welcome') + ', ' + data.firstName
+                ? 'Welcome, ' + data.firstName
                 : ''
             }`}
           </h1>
