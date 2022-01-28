@@ -5,7 +5,7 @@ import { useInternationalization } from '../Hooks'
 export const Header = () => (
   <header className="border-b border-black/20 pb-10 -mx-4">
     <div className="container mx-auto">
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 lg:justify-between lg:items-center ml-4">
+      <div className="w-full grid grid-cols-1 lg:flex lg:justify-between lg:items-center ml-4">
         <div>
           <Image
             src="/gc-sig.png"

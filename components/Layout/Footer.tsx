@@ -15,47 +15,47 @@ export const Footer = () => (
           About government
         </h3>
         <ul className="flex flex-col text-xs lg:grid lg:grid-cols-2 xl:grid xl:grid-cols-3 lg:gap-1">
-          <li className="text-white w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2 w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               Contact us
             </a>
           </li>
-          <li className="text-white w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2  w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               News
             </a>
           </li>
-          <li className="text-white w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2 w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               Prime Minister
             </a>
           </li>
-          <li className="text-white w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2 w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               Departments and agencies
             </a>
           </li>
-          <li className="text-white w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2  w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               Treaties, laws and regulations
             </a>
           </li>
-          <li className="text-white w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2 w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               How government works
             </a>
           </li>
-          <li className="text-white w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2 w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               Public service and military
             </a>
           </li>
-          <li className="text-white w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2 w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               Government-wide reporting
             </a>
           </li>
-          <li className="text-white w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2 w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               Open government
             </a>
@@ -67,7 +67,7 @@ export const Footer = () => (
       <div className="grid lg:grid-cols-12 sm:grid-cols-6 md:grid-cols-8 ml-2 mr-2">
         <div className="sm:col-start-1 sm:col-span-4 lg:col-start-1 lg:col-span-7">
           <nav className="">
-            <ul className="flex flex-row list-disc space-x-6">
+            <ul className="flex flex-row list-disc space-x-6 mr-10">
               <li className="list-none">
                 <a href="#">Social media</a>
               </li>

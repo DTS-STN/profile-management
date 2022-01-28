@@ -1,6 +1,3 @@
-import { Input } from '../../components/Forms/Input'
-import { Layout } from '../../components/Layout'
-import { NavButtons } from '../../components/NavButtons'
 import { useRouter } from 'next/router'
 import { useInternationalization } from '../../components/Hooks'
 import { useState } from 'react'

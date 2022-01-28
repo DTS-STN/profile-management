@@ -1,10 +1,3 @@
-import { useRouter } from 'next/router'
-import { useState } from 'react'
-import { Layout } from '../../components/Layout'
-import { UserPreferences } from '../../components/Layout/UserPreferences'
-import { NavButtons } from '../../components/NavButtons'
-import TimezonePicker from 'react-bootstrap-timezone-picker'
-import 'react-bootstrap-timezone-picker/dist/react-bootstrap-timezone-picker.min.css'
 import { CommonUserPreferences } from './commonUserPreferences'
 
 export default function Index({ data }) {

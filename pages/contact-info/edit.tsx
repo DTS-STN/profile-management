@@ -1,13 +1,4 @@
 import React, { useState } from 'react'
-import { Layout } from '../../components/Layout'
-import { Input } from '../../components/Forms/Input'
-import Select from 'react-select'
-import { NavButtons } from '../../components/NavButtons'
-import { useRouter } from 'next/router'
-import countryList from 'react-select-country-list'
-import { ErrorLabel } from '../../components/Forms/validation/ErrorLabel'
-import { SubmitMessage } from '../../components/Forms/validation/SubmitMessage'
-import { useInternationalization } from '../../components/Hooks'
 import { CommonContactInfo } from './commonContactInfo'
 
 const RESIDENTIAL_ADDRESS = 1

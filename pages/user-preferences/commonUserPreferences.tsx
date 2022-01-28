@@ -132,8 +132,6 @@ export const CommonUserPreferences: React.FC<{
             setErrorMessage(submitErrorMsg)
           }
           const messages = json.message.split(',')
-            ? json.message.split(',')
-            : json.message
           messages.forEach((msg) => {
             if (msg.includes('Web language')) {
               setWebLanguageCodeError(msg)
@@ -202,7 +200,7 @@ export const CommonUserPreferences: React.FC<{
                   checked={webLanguageCode == 2}
                   onChange={onWebLanguageChanged}
                   name="webLanguage"
-                  className="ml-4 mb-4"
+                  className="ml-4"
                   disabled={isDisabled}
                 />
                 <span> French</span>
@@ -210,7 +208,7 @@ export const CommonUserPreferences: React.FC<{
             </ul>
           </section>
 
-          <section>
+          <section className="mt-4">
             {correspondenceLanguageCodeError ? (
               <ErrorLabel errorMessage={correspondenceLanguageCodeError} />
             ) : (
@@ -241,14 +239,14 @@ export const CommonUserPreferences: React.FC<{
                   checked={correspondenceLanguageCode == 2}
                   onChange={onCorrespondenceLanguageCodeChanged}
                   name="correspondenceLanguage"
-                  className="ml-4 mb-4"
+                  className="ml-4"
                   disabled={isDisabled}
                 />
                 <span> French</span>
               </li>
             </ul>
           </section>
-          <section>
+          <section className="mt-4">
             {brailleTtyKeyboardError ? (
               <ErrorLabel errorMessage={brailleTtyKeyboardError} />
             ) : (
@@ -279,14 +277,14 @@ export const CommonUserPreferences: React.FC<{
                   checked={brailleTtyKeyboard == 0}
                   onChange={onBrailleTtyKeyboardChanged}
                   name="brailleTtyKeyboard"
-                  className="ml-4  mb-4"
+                  className="ml-4"
                   disabled={isDisabled}
                 />
                 <span> No</span>
               </li>
             </ul>
           </section>
-          <section>
+          <section className="mt-4">
             {preferredCurrencyCodeError ? (
               <ErrorLabel errorMessage={preferredCurrencyCodeError} />
             ) : (
@@ -317,14 +315,14 @@ export const CommonUserPreferences: React.FC<{
                   checked={preferredCurrencyCode == 2}
                   onChange={onPreferredCurrencyCodeChanged}
                   name="currency"
-                  className="ml-4 mb-4"
+                  className="ml-4"
                   disabled={isDisabled}
                 />
                 <span> USD</span>
               </li>
             </ul>
           </section>
-          <section>
+          <section className="mt-4">
             {timeFormatCodeError ? (
               <ErrorLabel errorMessage={timeFormatCodeError} />
             ) : (
@@ -353,24 +351,25 @@ export const CommonUserPreferences: React.FC<{
                   checked={timeFormatCode == 2}
                   onChange={onTimeFormatCodeChanged}
                   name="timeFormat"
-                  className="ml-4  mb-4"
+                  className="ml-4"
                   disabled={isDisabled}
                 />
                 <span> 24-Hour</span>
               </li>
             </ul>
           </section>
-          <section>
+          <section className="mt-4">
             {timezoneError ? <ErrorLabel errorMessage={timezoneError} /> : ''}
             <label htmlFor="timeZone">What time zone are you in?</label>
-            <br></br>
-            <TimezonePicker
-              absolute={false}
-              placeholder="Select a timezone..."
-              value={timeZoneCode}
-              onChange={changeTimezoneHandler}
-              disabled={isDisabled}
-            />
+            <div>
+              <TimezonePicker
+                absolute={false}
+                placeholder="Select a timezone..."
+                value={timeZoneCode}
+                onChange={changeTimezoneHandler}
+                disabled={isDisabled}
+              />
+            </div>
           </section>
           <SubmitMessage
             messageType={infoMessage !== undefined ? 'success' : ''}
@@ -380,11 +379,11 @@ export const CommonUserPreferences: React.FC<{
             messageType={errorMessage !== undefined ? 'error' : ''}
             message={errorMessage}
           />
-          <br></br>
+
           {isDisabled ? (
             ''
           ) : (
-            <div className="flex justify-between items-center mb-10">
+            <div className="flex justify-between items-center mt-2">
               <input
                 type="submit"
                 className="btn btn-primary mr-4"
@@ -395,7 +394,7 @@ export const CommonUserPreferences: React.FC<{
           )}
         </div>
       </form>
-      <br></br>
+
       <NavButtons
         fromLocation={`/contact-info?id=${userData}`}
         toLocation={`/user-preferences?id=${userData}`}

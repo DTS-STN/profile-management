@@ -12,64 +12,58 @@ export default function Home({ data }) {
     <div>
       <Head>
         <title>Personal Information</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Layout data={data} title="Personal Information">
         <form
           action="#"
           onSubmit={(e) => alert('submitted data: ' + e.target[0].value)}
         >
-          <fieldset className="fieldset">
-            <legend>
-              <h4 className="h4 mb-4">Personal Information</h4>
-            </legend>
-            <div className="w-1/2 mb-14">
-              <Input
-                type="text"
-                name="firstName"
-                label="First Name"
-                value={data.firstName}
-                disabled
-              />
-              <Input
-                type="text"
-                name="middleName"
-                label="Middle Name"
-                value={data.middleName}
-                disabled
-              />
-              <Input
-                type="text"
-                name="lastName"
-                label="Last Name"
-                value={data.lastName}
-                disabled
-              />
-              <Input
-                type="text"
-                name="dob"
-                label="Date of Birth (YYYY-MM-DD)"
-                value={data.dob.substring(0, 10)}
-                disabled
-              />
-              <Input
-                type="text"
-                name="sin"
-                label="SIN Number"
-                value={data.sinNumber}
-                disabled
-              />
-              <Input
-                type="text"
-                name="married"
-                label="Marital Status"
-                value={data.maritalStatusCode == 1 ? 'Single' : 'Married'}
-                disabled
-              />
-            </div>
-          </fieldset>
+          <div className="flex-auto sm:w-2/3 md:max-w-xl lg:w-1/2 ml-2">
+            <Input
+              type="text"
+              name="firstName"
+              label="First Name"
+              value={data.firstName}
+              disabled
+            />
+            <Input
+              type="text"
+              name="middleName"
+              label="Middle Name"
+              value={data.middleName}
+              disabled
+            />
+            <Input
+              type="text"
+              name="lastName"
+              label="Last Name"
+              value={data.lastName}
+              disabled
+            />
+            <Input
+              type="text"
+              name="dob"
+              label="Date of Birth (YYYY-MM-DD)"
+              value={data.dob.substring(0, 10)}
+              disabled
+            />
+            <Input
+              type="text"
+              name="sin"
+              label="SIN Number"
+              value={data.sinNumber}
+              disabled
+            />
+            <Input
+              type="text"
+              name="married"
+              label="Marital Status"
+              value={data.maritalStatusCode == 1 ? 'Single' : 'Married'}
+              disabled
+            />
+          </div>
         </form>
-        <br />
+
         <NavButtons
           fromLocation="/"
           toLocation={`/financial-info?id=${userData}`}

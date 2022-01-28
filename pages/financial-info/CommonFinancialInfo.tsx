@@ -94,9 +94,9 @@ export const CommonFinancialInfo: React.FC<{
           if (json.code > 201) {
             setErrorMessage(submitErrorMsg)
           }
+
           const messages = json.message.split(',')
-            ? json.message.split(',')
-            : json.message
+
           messages.forEach((msg) => {
             if (msg.includes('Branch')) {
               setBranchNumberError(msg)
@@ -184,11 +184,11 @@ export const CommonFinancialInfo: React.FC<{
               messageType={errorMessage !== undefined ? 'error' : ''}
               message={errorMessage}
             />
-            <br></br>
+
             {isDisabled ? (
               ''
             ) : (
-              <div className="justify-between max-w-xl lg:w-1/2 ml-2">
+              <div className="justify-between max-w-xl lg:w-1/2 ml-2 mt-2">
                 <input
                   type="submit"
                   className="btn btn-primary mr-4"
@@ -207,7 +207,6 @@ export const CommonFinancialInfo: React.FC<{
           </div>
         </form>
 
-        <br></br>
         <NavButtons
           fromLocation={`/personal-info?id=${userData}`}
           toLocation={`/contact-info?id=${userData}`}

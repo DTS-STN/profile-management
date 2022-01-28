@@ -1,11 +1,4 @@
 import React, { useState } from 'react'
-import { Layout } from '../../components/Layout'
-import { Input } from '../../components/Forms/Input'
-import Select from 'react-select'
-import { NavButtons } from '../../components/NavButtons'
-import { ContactInfo } from '../../components/Layout/ContactInfo'
-import { useRouter } from 'next/router'
-import countryList from 'react-select-country-list'
 import { CommonContactInfo } from './commonContactInfo'
 
 export default function Index({ data }) {
@@ -17,7 +10,7 @@ export const getServerSideProps = async (_context) => {
     `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/contact/info/${_context.query.id}`
   )
   const data = await res.json()
-  console.log(data)
+
   return {
     props: {
       data: data,

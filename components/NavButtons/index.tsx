@@ -10,7 +10,7 @@ export const NavButtons: React.VFC<NavButtonProps> = ({
   fromLocation,
   toLocation,
 }) => (
-  <div className="flex justify-between ml-2" role="navigation">
+  <div className="flex justify-between ml-2 mt-20" role="navigation">
     <div>
       <Link href={fromLocation} passHref>
         <a className="btn btn-default">Back</a>

@@ -4,7 +4,6 @@ import { Input } from '../../components/Forms/Input'
 import Select from 'react-select'
 import { NavButtons } from '../../components/NavButtons'
 import { useRouter } from 'next/router'
-import countryList from 'react-select-country-list'
 import { ErrorLabel } from '../../components/Forms/validation/ErrorLabel'
 import { SubmitMessage } from '../../components/Forms/validation/SubmitMessage'
 import { useInternationalization } from '../../components/Hooks'
@@ -234,7 +233,6 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
                   city,
                   countryCode: country,
                   addressTypeCode: RESIDENTIAL_ADDRESS,
-                  expiryDate: null,
                 },
                 {
                   streetNumber: streetNumberMailing,
@@ -244,9 +242,6 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
                   city: cityMailing,
                   countryCode: countryMailing,
                   addressTypeCode: MAILING_ADDRESS,
-                  expiryDate: hasDifferentMailing
-                    ? null
-                    : new Date().toLocaleString(),
                 },
               ]
             : [
@@ -258,7 +253,6 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
                   city,
                   countryCode: country,
                   addressTypeCode: RESIDENTIAL_ADDRESS,
-                  expiryDate: null,
                 },
               ],
         }
@@ -290,8 +284,6 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
               setErrorMessage(submitErrorMsg)
             }
             const messages = json.message.split(',')
-              ? json.message.split(',')
-              : json.message
             messages.forEach((msg) => {
               if (msg.includes('Street Name')) {
                 setStreetNameError(msg)
@@ -392,7 +384,7 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
               required
               disabled={isDisabled}
             />
-            <section>
+            <section className="mb-8">
               {countryError ? <ErrorLabel errorMessage={countryError} /> : ''}
               <label>
                 <span className="text-danger">*</span> Country
@@ -408,8 +400,8 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
                 placeholder="Select your country of residence"
               />
             </section>
-            <br></br>
-            <section>
+
+            <section className="mb-4">
               <label htmlFor="mailing">
                 <input
                   type="checkbox"
@@ -425,10 +417,10 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
                 <span> Mailing Address is same as residential Address?</span>
               </label>
             </section>
-            <br></br>
+
             {hasDifferentMailing ? (
               <div>
-                <h3 className="h5 mb-8">Mailing Address</h3>
+                <h3 className="h5 mb-4">Mailing Address</h3>
                 <Input
                   type="text"
                   name="streetNumberMailing"
@@ -510,7 +502,7 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
             ) : (
               ''
             )}
-            <br></br>
+
             <Input
               type="email"
               name="email"
@@ -542,11 +534,10 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
               message={errorMessage}
             />
 
-            <br></br>
             {isDisabled ? (
               ''
             ) : (
-              <div className="flex justify-between items-center mb-10">
+              <div className="flex justify-between items-center mt-2">
                 <input
                   type="submit"
                   className="btn btn-primary mr-4"
@@ -564,7 +555,7 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
             )}
           </div>
         </form>
-        <br></br>
+
         <NavButtons
           fromLocation={`/financial-info?id=${userData}`}
           toLocation={`/user-preferences?id=${userData}`}

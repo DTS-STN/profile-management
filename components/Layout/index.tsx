@@ -32,8 +32,8 @@ export const Layout: React.VFC<{
           </div>
         </div>
         <Header />
-        <div className="bg-primary bg-auto -mx-4 ml-.80">
-          <div className="flex flex-auto justify-between items-center container">
+        <div className="bg-primary -mx:4 invisible lg:visible">
+          <div className="flex flex-row justify-between items-center ml-6 mr-1 container lg:flex lg:flex-row lg:justify-between lg:items-center lg:container lg:mx-auto">
             <h3 className="text-h3 py-3 text-white font-bold">
               Service Canada
             </h3>
