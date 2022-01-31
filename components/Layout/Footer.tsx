@@ -4,7 +4,7 @@ import Image from 'next/image'
 export const Footer = () => (
   <footer className="text-[14px]">
     <div
-      className={`w-full ml-2  h-auto bg-custom-blue-dark ${styles.footerBackground}`}
+      className={`w-full h-auto bg-custom-blue-dark ${styles.footerBackground}`}
     >
       <div
         className="py-7 container mx-auto"
@@ -15,7 +15,7 @@ export const Footer = () => (
           About government
         </h3>
         <ul className="flex flex-col text-xs lg:grid lg:grid-cols-2 xl:grid xl:grid-cols-3 lg:gap-1">
-          <li className="text-white ml-2 w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2  w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               Contact us
             </a>
@@ -25,12 +25,12 @@ export const Footer = () => (
               News
             </a>
           </li>
-          <li className="text-white ml-2 w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2  w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               Prime Minister
             </a>
           </li>
-          <li className="text-white ml-2 w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2  w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               Departments and agencies
             </a>
@@ -40,22 +40,22 @@ export const Footer = () => (
               Treaties, laws and regulations
             </a>
           </li>
-          <li className="text-white ml-2 w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2  w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               How government works
             </a>
           </li>
-          <li className="text-white ml-2 w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2  w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               Public service and military
             </a>
           </li>
-          <li className="text-white ml-2 w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2  w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               Government-wide reporting
             </a>
           </li>
-          <li className="text-white ml-2 w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
+          <li className="text-white ml-2  w-64 md:w-56 lg:w-80 my-2.5 hover:underline">
             <a className="font-body" href="#">
               Open government
             </a>
@@ -64,33 +64,31 @@ export const Footer = () => (
       </div>
     </div>
     <div className="my-8">
-      <div className="grid lg:grid-cols-12 sm:grid-cols-6 md:grid-cols-8 ml-2 mr-2">
-        <div className="sm:col-start-1 sm:col-span-4 lg:col-start-1 lg:col-span-7">
-          <nav className="">
-            <ul className="flex flex-row list-disc space-x-6 mr-10">
-              <li className="list-none">
-                <a href="#">Social media</a>
-              </li>
+      <div className="container mx-auto flex flex-wrap justify-between items-center">
+        <nav className="">
+          <ul className="flex flex-row list-disc space-x-6">
+            <li className="list-none">
+              <a href="#">Social media</a>
+            </li>
 
-              <li>
-                <a href="#">Mobile applications</a>
-              </li>
+            <li>
+              <a href="#">Mobile applications</a>
+            </li>
 
-              <li>
-                <a href="#">About Canada.ca</a>
-              </li>
+            <li>
+              <a href="#">About Canada.ca</a>
+            </li>
 
-              <li>
-                <a href="#">Terms and conditions</a>
-              </li>
+            <li>
+              <a href="#">Terms and conditions</a>
+            </li>
 
-              <li>
-                <a href="#">Privacy</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div className="sm:col-start-5 sm:col-span-2 lg:col-start-10 lg:col-span-2">
+            <li>
+              <a href="#">Privacy</a>
+            </li>
+          </ul>
+        </nav>
+        <div>
           <Image
             width="200px"
             height="40px"

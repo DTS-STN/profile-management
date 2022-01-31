@@ -32,8 +32,8 @@ export const Layout: React.VFC<{
           </div>
         </div>
         <Header />
-        <div className="bg-primary -mx:4 invisible lg:visible">
-          <div className="flex flex-row justify-between items-center ml-6 mr-1 container lg:flex lg:flex-row lg:justify-between lg:items-center lg:container lg:mx-auto">
+        <div className="bg-primary -mx:4">
+          <div className="flex flex-row justify-between items-center container mx-auto">
             <h3 className="text-h3 py-3 text-white font-bold">
               Service Canada
             </h3>
@@ -58,8 +58,8 @@ export const Layout: React.VFC<{
           <hr className="border-b border-black/20 my-10" />
           {children}
         </div>
+        <Footer />
       </div>
-      <Footer />
     </main>
   )
 }
