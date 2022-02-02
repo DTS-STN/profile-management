@@ -3,6 +3,9 @@
   "otherLangFull": "English",
   "search": "Rechercher dans Canada.ca",
   "welcome": "Bienvenue",
-  "branch": "FR - Branch number",
-  "req": "FR - required"
+  "branch": "FR - Branch Number",
+  "institution": "FR- Financial Institution Number",
+  "account": "FR- Account Number",
+  "req": "FR - required",
+  "submitError": "There was an error submitting your changes."
 }

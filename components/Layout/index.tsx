@@ -32,7 +32,7 @@ export const Layout: React.VFC<{
           </div>
         </div>
         <Header />
-        <div className="bg-primary -mx-4">
+        <div className="bg-primary -mx:4">
           <div className="flex flex-row justify-between items-center container mx-auto">
             <h3 className="text-h3 py-3 text-white font-bold">
               Service Canada
@@ -43,14 +43,23 @@ export const Layout: React.VFC<{
         <div className="container mx-auto flex flex-col mb-16">
           <Breadcrumbs items={['Service Canada', 'OAS/GIS Account', title]} />
           <h1 className="h1 my-8 mb-10">
-            {useInternationalization('welcome')}, {`${data.firstName}`}
+            {`${
+              router.pathname !== '/' && data.firstName
+                ? 'Welcome, ' + data.firstName
+                : ''
+            }`}
           </h1>
-          <NavigationHeader path={router.pathname} />
+          {router.pathname !== '/' ? (
+            <NavigationHeader path={router.pathname} />
+          ) : (
+            ''
+          )}
+
           <hr className="border-b border-black/20 my-10" />
           {children}
         </div>
+        <Footer />
       </div>
-      <Footer />
     </main>
   )
 }

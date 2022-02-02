@@ -1,10 +1,10 @@
 import { CommonUserPreferences } from './commonUserPreferences'
 
-export default function Index({ data }) {
+export default function Edit({ data }) {
   return (
     <CommonUserPreferences
       data={data}
-      isDisabled={true}
+      isDisabled={false}
     ></CommonUserPreferences>
   )
 }
