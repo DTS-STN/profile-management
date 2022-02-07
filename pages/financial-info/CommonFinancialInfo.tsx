@@ -129,9 +129,9 @@ export const CommonFinancialInfo: React.FC<{
       </Head>
       <Layout data={data} title="Financial Information">
         {isDisabled ? (
-          <FinancialInfo active={true} />
-        ) : (
           <FinancialInfo active={false} />
+        ) : (
+          <FinancialInfo active={true} />
         )}
 
         <form onSubmit={handleSubmit} noValidate>
