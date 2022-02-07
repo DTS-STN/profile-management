@@ -38,7 +38,10 @@ export default function Index({ data }) {
     return benefits.map((benefit, index) => {
       const { applicationStatus, paymentDate, paymentAmount } = benefit
       return (
-        <tr className="border-b odd:bg-white even:bg-[#F0F0F0] hover:bg-[#CCCCCC]">
+        <tr
+          key={index}
+          className="border-b odd:bg-white even:bg-[#F0F0F0] hover:bg-[#CCCCCC]"
+        >
           <td className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-l">
             {applicationStatus}
           </td>
