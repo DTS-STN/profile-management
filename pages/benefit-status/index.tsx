@@ -75,10 +75,9 @@ export default function Index({ data }) {
               title="OAS Benefit"
               type={AlertType.WARNING}
               insertHTML
-              children={
-                'No Benefits applications have been made on your behalf.'
-              }
-            />
+            >
+              {'No Benefits applications have been made on your behalf.'}
+            </Alert>
           )}
         </div>
 
