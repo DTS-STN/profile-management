@@ -165,9 +165,9 @@ export const CommonUserPreferences: React.FC<{
   return (
     <Layout data={data} title="User Preferences">
       {isDisabled ? (
-        <UserPreferences active={true} />
-      ) : (
         <UserPreferences active={false} />
+      ) : (
+        <UserPreferences active={true} />
       )}
       <form onSubmit={handleSubmit} noValidate>
         <div className="flex-auto sm:w-2/3 md:max-w-xl lg:w-1/2 ml-2">
@@ -187,7 +187,7 @@ export const CommonUserPreferences: React.FC<{
                   value="1"
                   checked={webLanguageCode == 1}
                   onChange={onWebLanguageChanged}
-                  className="ml-4"
+                  className="ml-4 radiobutton"
                   disabled={isDisabled}
                 />
                 <span> English</span>
@@ -200,7 +200,7 @@ export const CommonUserPreferences: React.FC<{
                   checked={webLanguageCode == 2}
                   onChange={onWebLanguageChanged}
                   name="webLanguage"
-                  className="ml-4"
+                  className="ml-4 radiobutton"
                   disabled={isDisabled}
                 />
                 <span> French</span>
@@ -226,7 +226,7 @@ export const CommonUserPreferences: React.FC<{
                   value="1"
                   checked={correspondenceLanguageCode == 1}
                   onChange={onCorrespondenceLanguageCodeChanged}
-                  className="ml-4"
+                  className="ml-4 radiobutton"
                   disabled={isDisabled}
                 />
                 <span> English</span>
@@ -239,7 +239,7 @@ export const CommonUserPreferences: React.FC<{
                   checked={correspondenceLanguageCode == 2}
                   onChange={onCorrespondenceLanguageCodeChanged}
                   name="correspondenceLanguage"
-                  className="ml-4"
+                  className="ml-4 radiobutton"
                   disabled={isDisabled}
                 />
                 <span> French</span>
@@ -264,7 +264,7 @@ export const CommonUserPreferences: React.FC<{
                   value="1"
                   checked={brailleTtyKeyboard == 1}
                   onChange={onBrailleTtyKeyboardChanged}
-                  className="ml-4"
+                  className="ml-4 radiobutton"
                   disabled={isDisabled}
                 />
                 <span> Yes</span>
@@ -277,7 +277,7 @@ export const CommonUserPreferences: React.FC<{
                   checked={brailleTtyKeyboard == 0}
                   onChange={onBrailleTtyKeyboardChanged}
                   name="brailleTtyKeyboard"
-                  className="ml-4"
+                  className="ml-4 radiobutton"
                   disabled={isDisabled}
                 />
                 <span> No</span>
@@ -302,7 +302,7 @@ export const CommonUserPreferences: React.FC<{
                   value="1"
                   checked={preferredCurrencyCode == 1}
                   onChange={onPreferredCurrencyCodeChanged}
-                  className="ml-4"
+                  className="ml-4 radiobutton"
                   disabled={isDisabled}
                 />
                 <span> CAD</span>
@@ -315,7 +315,7 @@ export const CommonUserPreferences: React.FC<{
                   checked={preferredCurrencyCode == 2}
                   onChange={onPreferredCurrencyCodeChanged}
                   name="currency"
-                  className="ml-4"
+                  className="ml-4 radiobutton"
                   disabled={isDisabled}
                 />
                 <span> USD</span>
@@ -338,7 +338,7 @@ export const CommonUserPreferences: React.FC<{
                   value="1"
                   checked={timeFormatCode == 1}
                   onChange={onTimeFormatCodeChanged}
-                  className="ml-4"
+                  className="ml-4 radiobutton"
                   disabled={isDisabled}
                 />
                 <span> 12-Hour</span>
@@ -351,7 +351,7 @@ export const CommonUserPreferences: React.FC<{
                   checked={timeFormatCode == 2}
                   onChange={onTimeFormatCodeChanged}
                   name="timeFormat"
-                  className="ml-4"
+                  className="ml-4 radiobutton"
                   disabled={isDisabled}
                 />
                 <span> 24-Hour</span>
@@ -397,7 +397,7 @@ export const CommonUserPreferences: React.FC<{
 
       <NavButtons
         fromLocation={`/contact-info?id=${userData}`}
-        toLocation={`/user-preferences?id=${userData}`}
+        toLocation={`/benefit-status?id=${userData}`}
       />
     </Layout>
   )

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { LanguageContext } from '../Contexts'
 import { languageOptions, dictionaryList } from '../../i18n'
 
@@ -55,4 +55,14 @@ export const useInternationalization = (key: string) => {
   const { userLanguage } = useContext(LanguageContext)
   if (dictionaryList[userLanguage] == undefined) return ''
   return dictionaryList[userLanguage][key]
+}
+
+export const useWindowWidth = () => {
+  const [width, setWidth] = useState(0)
+  const handleResize = () => setWidth(window.innerWidth)
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [width])
+  return width
 }

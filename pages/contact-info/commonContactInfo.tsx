@@ -322,9 +322,9 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
     return (
       <Layout data={data} title="Contact Information">
         {isDisabled ? (
-          <ContactInfo active={true} />
-        ) : (
           <ContactInfo active={false} />
+        ) : (
+          <ContactInfo active={true} />
         )}
         <h3 className="h5 mb-8">Residential Address</h3>
         <form onSubmit={handleSubmit} noValidate>
@@ -419,7 +419,7 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
             </section>
 
             {hasDifferentMailing ? (
-              <div>
+              <div className="mb-4">
                 <h3 className="h5 mb-4">Mailing Address</h3>
                 <Input
                   type="text"
