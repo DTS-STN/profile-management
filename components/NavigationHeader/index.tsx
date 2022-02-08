@@ -15,7 +15,7 @@ export const NavigationHeader: React.VFC<{ path: string }> = ({ path }) => {
               : 'text-primary text-h4 border border-primary-border underline'
           }`}
         >
-          <a>1. Personal Information</a>
+          <a>Personal Information</a>
         </li>
       </Link>
       <Link href={`/financial-info?id=${userData}`} passHref>
@@ -26,7 +26,7 @@ export const NavigationHeader: React.VFC<{ path: string }> = ({ path }) => {
               : 'text-primary text-h4 border border-primary-border underline'
           }`}
         >
-          <a>2. Financial Information</a>
+          <a>Financial Information</a>
         </li>
       </Link>
       <Link href={`/contact-info?id=${userData}`} passHref>
@@ -37,7 +37,7 @@ export const NavigationHeader: React.VFC<{ path: string }> = ({ path }) => {
               : 'text-primary text-h4 border border-primary-border underline'
           }`}
         >
-          <a>3. Contact Information</a>
+          <a>Contact Information</a>
         </li>
       </Link>
       <Link href={`/user-preferences?id=${userData}`} passHref>
@@ -48,7 +48,7 @@ export const NavigationHeader: React.VFC<{ path: string }> = ({ path }) => {
               : 'text-primary text-h4 border border-primary-border underline'
           }`}
         >
-          <a>4. User Preferences</a>
+          <a>User Preferences</a>
         </li>
       </Link>
       <Link href={`/benefit-status?id=${userData}`} passHref>
@@ -59,7 +59,7 @@ export const NavigationHeader: React.VFC<{ path: string }> = ({ path }) => {
               : 'text-primary text-h4 border border-primary-border underline'
           }`}
         >
-          <a>5. Current Benefits Status</a>
+          <a>Current Benefits Status</a>
         </li>
       </Link>
     </ol>
