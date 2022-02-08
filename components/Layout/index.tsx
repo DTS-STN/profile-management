@@ -60,8 +60,8 @@ export const Layout: React.VFC<{
           <hr className="border-b border-black/20 my-10" />
           {children}
         </div>
-        <Footer />
       </div>
+      <Footer />
     </main>
   )
 }
