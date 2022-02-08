@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1644331371546" clover="3.2.0">
-  <project timestamp="1644331371546" name="All files">
+<coverage generated="1644335312511" clover="3.2.0">
+  <project timestamp="1644335312511" name="All files">
     <metrics statements="452" coveredstatements="83" conditionals="321" coveredconditionals="35" methods="107" coveredmethods="17" elements="880" coveredelements="135" complexity="0" loc="452" ncloc="452" packages="17" files="34" classes="34"/>
     <package name="components.Alert">
       <metrics statements="17" coveredstatements="0" conditionals="9" coveredconditionals="0" methods="3" coveredmethods="0"/>
@@ -200,8 +200,8 @@
       </file>
       <file name="Footer.tsx" path="/home/runner/work/profile-management/profile-management/components/Layout/Footer.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="3" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
       </file>
       <file name="Header.tsx" path="/home/runner/work/profile-management/profile-management/components/Layout/Header.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
