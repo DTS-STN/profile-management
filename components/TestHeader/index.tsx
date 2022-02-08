@@ -13,8 +13,8 @@ export const TestHeader = () => (
           </div>
           <div className="lg:ml-4 xl:ml-8 xxl:ml-12">
             <p className="font-body mt-5 lg:mt-auto text-white lg:ml-4 pt-1 my-auto lg:mb-0 lg:pb-1">
-              You cannot change any information through this test site. This is
-              a POC project.
+              This site is a proof of concept. You cannot change/update any
+              information using this site.
             </p>
           </div>
         </div>
