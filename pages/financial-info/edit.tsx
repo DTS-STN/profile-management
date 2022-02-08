@@ -1,4 +1,4 @@
-import { CommonFinancialInfo } from './CommonFinancialInfo'
+import { CommonFinancialInfo } from '../../components/Layout/CommonFinancialInfo'
 
 export default function Edit({ data }) {
   return (

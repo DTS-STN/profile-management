@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CommonContactInfo } from './commonContactInfo'
+import { CommonContactInfo } from '../../components/Layout/commonContactInfo'
 
 export default function Index({ data }) {
   return <CommonContactInfo data={data} isDisabled={true}></CommonContactInfo>

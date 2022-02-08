@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CommonContactInfo } from './commonContactInfo'
+import { CommonContactInfo } from '../../components/Layout/commonContactInfo'
 
 const RESIDENTIAL_ADDRESS = 1
 const MAILING_ADDRESS = 2

@@ -1,4 +1,4 @@
-import { CommonUserPreferences } from './commonUserPreferences'
+import { CommonUserPreferences } from '../../components/Layout/commonUserPreferences'
 
 export default function Index({ data }) {
   return (
