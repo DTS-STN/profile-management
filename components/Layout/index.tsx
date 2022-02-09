@@ -4,6 +4,7 @@ import { Breadcrumbs } from '../Breadcrumbs'
 import { LanguageContext } from '../Contexts'
 import { useInternationalization } from '../Hooks'
 import { NavigationHeader } from '../NavigationHeader'
+import { TestHeader } from '../TestHeader'
 import { Footer } from './Footer'
 import { Header } from './Header'
 
@@ -20,6 +21,7 @@ export const Layout: React.VFC<{
 
   return (
     <main>
+      <TestHeader />
       <div className="mx-4 min-h-screen">
         <div className="container mx-auto">
           <div className="flex justify-end my-4">
@@ -58,8 +60,8 @@ export const Layout: React.VFC<{
           <hr className="border-b border-black/20 my-10" />
           {children}
         </div>
-        <Footer />
       </div>
+      <Footer />
     </main>
   )
 }

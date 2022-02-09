@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useInternationalization } from '../../components/Hooks'
 import { useState } from 'react'
-import { CommonFinancialInfo } from './CommonFinancialInfo'
+import { CommonFinancialInfo } from '../../components/Layout/CommonFinancialInfo'
 
 export default function Index({ data }) {
   const router = useRouter()
