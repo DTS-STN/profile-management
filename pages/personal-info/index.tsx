@@ -44,7 +44,7 @@ export default function Home({ data }) {
               type="text"
               name="dob"
               label="Date of Birth (YYYY-MM-DD)"
-              value={data.dob.substring(0, 10)}
+              value={data.dob}
               disabled
             />
             <Input
