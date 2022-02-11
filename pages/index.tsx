@@ -52,16 +52,11 @@ export const getServerSideProps = async (_context: any) => {
 
   let users = []
 
-  // data.forEach((user: { _id: any; lastName: string; firstName: string }) => {
-  //   users.push({
-  //     value: user._id,
-  //     label: user.lastName + ', ' + user.firstName,
-  //   })
-  // })
-
-  users.push({
-    value: '6202d982117bd25b6b4284b6',
-    label: 'White, George',
+  data.forEach((user: { _id: any; lastName: string; firstName: string }) => {
+    users.push({
+      value: user._id,
+      label: user.lastName + ', ' + user.firstName,
+    })
   })
 
   return {
