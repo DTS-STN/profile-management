@@ -397,7 +397,7 @@ export const CommonUserPreferences: React.FC<{
 
       <NavButtons
         fromLocation={`/contact-info?id=${userData}`}
-        toLocation={`/benefit-status?id=${userData}`}
+        toLocation={`/user-preferences?id=${userData}`}
       />
     </Layout>
   )

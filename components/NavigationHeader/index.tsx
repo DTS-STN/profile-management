@@ -51,17 +51,6 @@ export const NavigationHeader: React.VFC<{ path: string }> = ({ path }) => {
           <a>User Preferences</a>
         </li>
       </Link>
-      <Link href={`/benefit-status?id=${userData}`} passHref>
-        <li
-          className={`rounded py-3 px-6 cursor-pointer ${
-            path.includes('/benefit-status')
-              ? 'text-white text-h4 bg-primary'
-              : 'text-primary text-h4 border border-primary-border underline'
-          }`}
-        >
-          <a>Current Benefits Status</a>
-        </li>
-      </Link>
     </ol>
   )
 }
