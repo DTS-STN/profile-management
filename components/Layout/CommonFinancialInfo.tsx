@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Input } from '../../components/Forms/Input'
 import { SubmitMessage } from '../../components/Forms/validation/SubmitMessage'
 import { useInternationalization } from '../../components/Hooks'
@@ -7,6 +7,7 @@ import { Layout } from '../../components/Layout'
 import { FinancialInfo } from '../../components/Layout/FinancialInfo'
 import { NavButtons } from '../../components/NavButtons'
 import Head from 'next/head'
+import { sendAnalyticsRequest } from '../../utils/web/helpers/utils'
 
 export const CommonFinancialInfo: React.FC<{
   data: any
@@ -14,6 +15,20 @@ export const CommonFinancialInfo: React.FC<{
 }> = ({ data, isDisabled }) => {
   const router = useRouter()
   const userData = router.query.id
+
+  useEffect(() => {
+    // only run on mount on the client
+    if (process.browser) {
+      const win = window as Window &
+        typeof globalThis & { adobeDataLayer: any; _satellite: any }
+      const lang = 'eng'
+      const creator = 'Employment and Social Development Canada'
+      const title = lang + '-profile management-financial information'
+
+      sendAnalyticsRequest(lang, title, creator, win)
+    }
+  })
+
   const [financialInfo, setFinancialInfo] = useState(
     data.userFinancialInfo != null ? data.userFinancialInfo : undefined
   )
@@ -126,22 +141,6 @@ export const CommonFinancialInfo: React.FC<{
       <Head>
         <title>Financial Information</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `var adobeDataLayer = [];
-              adobeDataLayer.push({
-                "event": "pageLoad",
-                "page": {
-                    "title": "eng-profile management-financial information",
-                    "language": "eng",
-                    "creator": "Employment and Social Development Canada",
-                    "accessRights": "2",
-                    "service": " ESDC-EDSC_ProfileManagement -EstimateurDePrestationsDeVieillesse"
-                }
-              });
-            `,
-          }}
-        />
         <script src="https://assets.adobedtm.com/be5dfd287373/0127575cd23a/launch-913b1beddf7a-staging.min.js"></script>
       </Head>
       <Layout data={data} title="Financial Information">
@@ -229,6 +228,8 @@ export const CommonFinancialInfo: React.FC<{
           toLocation={`/contact-info?id=${userData}`}
         />
       </Layout>
+      <script src="/scripts/adobe.js"></script>
+      <script type="text/javascript">_satellite.pageBottom()</script>
     </div>
   )
 }

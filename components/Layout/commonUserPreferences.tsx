@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Layout } from '../../components/Layout'
 import { NavButtons } from '../../components/NavButtons'
 import TimezonePicker from 'react-bootstrap-timezone-picker'
@@ -9,6 +9,7 @@ import { SubmitMessage } from '../../components/Forms/validation/SubmitMessage'
 import { useInternationalization } from '../../components/Hooks'
 import { UserPreferences } from '../../components/Layout/UserPreferences'
 import Head from 'next/head'
+import { sendAnalyticsRequest } from '../../utils/web/helpers/utils'
 
 export const CommonUserPreferences: React.FC<{
   data: any
@@ -16,6 +17,19 @@ export const CommonUserPreferences: React.FC<{
 }> = ({ data, isDisabled }) => {
   const router = useRouter()
   const userData = router.query.id
+
+  useEffect(() => {
+    // only run on mount on the client
+    if (process.browser) {
+      const win = window as Window &
+        typeof globalThis & { adobeDataLayer: any; _satellite: any }
+      const lang = 'eng'
+      const creator = 'Employment and Social Development Canada'
+      const title = lang + '-profile management-user preference'
+
+      sendAnalyticsRequest(lang, title, creator, win)
+    }
+  })
 
   const submitErrorMsg = useInternationalization('submitError')
 
@@ -166,23 +180,7 @@ export const CommonUserPreferences: React.FC<{
   return (
     <div>
       <Head>
-        <title>Financial Information</title>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `var adobeDataLayer = [];
-              adobeDataLayer.push({
-                "event": "pageLoad",
-                "page": {
-                    "title": "eng-profile management-user preference",
-                    "language": "eng",
-                    "creator": "Employment and Social Development Canada",
-                    "accessRights": "2",
-                    "service": " ESDC-EDSC_ProfileManagement -EstimateurDePrestationsDeVieillesse"
-                }
-              });
-            `,
-          }}
-        />
+        <title>User Preferences</title>
         <script src="https://assets.adobedtm.com/be5dfd287373/0127575cd23a/launch-913b1beddf7a-staging.min.js"></script>
       </Head>
       <Layout data={data} title="User Preferences">
@@ -424,6 +422,8 @@ export const CommonUserPreferences: React.FC<{
           toLocation={`/user-preferences?id=${userData}`}
         />
       </Layout>
+      <script src="/scripts/adobe.js"></script>
+      <script type="text/javascript">_satellite.pageBottom()</script>
     </div>
   )
 }

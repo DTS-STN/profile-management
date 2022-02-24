@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Layout } from '../../components/Layout'
 import { Input } from '../../components/Forms/Input'
 import Select from 'react-select'
@@ -9,6 +9,7 @@ import { SubmitMessage } from '../../components/Forms/validation/SubmitMessage'
 import { useInternationalization } from '../../components/Hooks'
 import { ContactInfo } from '../../components/Layout/ContactInfo'
 import Head from 'next/head'
+import { sendAnalyticsRequest } from '../../utils/web/helpers/utils'
 
 const RESIDENTIAL_ADDRESS = 1
 const MAILING_ADDRESS = 2
@@ -17,6 +18,19 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
   ({ data, isDisabled }) => {
     const router = useRouter()
     const userData = router.query.id
+
+    useEffect(() => {
+      // only run on mount on the client
+      if (process.browser) {
+        const win = window as Window &
+          typeof globalThis & { adobeDataLayer: any; _satellite: any }
+        const lang = 'eng'
+        const creator = 'Employment and Social Development Canada'
+        const title = lang + '-profile management-contact information'
+
+        sendAnalyticsRequest(lang, title, creator, win)
+      }
+    })
 
     const [contactInfo, setContactInfo] = useState(
       data.userContact ? data.userContact : undefined
@@ -323,22 +337,7 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
     return (
       <div>
         <Head>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `var adobeDataLayer = [];
-                adobeDataLayer.push({
-                  "event": "pageLoad",
-                  "page": {
-                      "title": "eng-profile management-contact information",
-                      "language": "eng",
-                      "creator": "Employment and Social Development Canada",
-                      "accessRights": "2",
-                      "service": " ESDC-EDSC_ProfileManagement -EstimateurDePrestationsDeVieillesse"
-                  }
-                });
-            `,
-            }}
-          />
+          <title>Contact Information</title>
           <script src="https://assets.adobedtm.com/be5dfd287373/0127575cd23a/launch-913b1beddf7a-staging.min.js"></script>
         </Head>
         <Layout data={data} title="Contact Information">
@@ -582,6 +581,8 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
             toLocation={`/user-preferences?id=${userData}`}
           />
         </Layout>
+        <script src="/scripts/adobe.js"></script>
+        <script type="text/javascript">_satellite.pageBottom()</script>
       </div>
     )
   }
