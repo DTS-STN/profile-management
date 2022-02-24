@@ -126,6 +126,23 @@ export const CommonFinancialInfo: React.FC<{
       <Head>
         <title>Financial Information</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `var adobeDataLayer = [];
+              adobeDataLayer.push({
+                "event": "pageLoad",
+                "page": {
+                    "title": "eng-profile management-financial information",
+                    "language": "eng",
+                    "creator": "Employment and Social Development Canada",
+                    "accessRights": "2",
+                    "service": " ESDC-EDSC_ProfileManagement -EstimateurDePrestationsDeVieillesse"
+                }
+              });
+            `,
+          }}
+        />
+        <script src="https://assets.adobedtm.com/be5dfd287373/0127575cd23a/launch-913b1beddf7a-staging.min.js"></script>
       </Head>
       <Layout data={data} title="Financial Information">
         {isDisabled ? (

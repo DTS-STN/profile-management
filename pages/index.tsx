@@ -13,6 +13,23 @@ export default function Home({ data }) {
       <Head>
         <title>User List</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `var adobeDataLayer = [];
+              adobeDataLayer.push({
+                "event": "pageLoad",
+                "page": {
+                    "title": "eng-profile management-user list",
+                    "language": "eng",
+                    "creator": "Employment and Social Development Canada",
+                    "accessRights": "2",
+                    "service": " ESDC-EDSC_ProfileManagement -EstimateurDePrestationsDeVieillesse"
+                }
+            });
+            `,
+          }}
+        />
+        <script src="https://assets.adobedtm.com/be5dfd287373/0127575cd23a/launch-913b1beddf7a-staging.min.js"></script>
       </Head>
       <Layout data={data} title="User list">
         <div className="grid grid-cols-2 mb-14">
