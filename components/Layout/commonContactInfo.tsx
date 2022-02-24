@@ -8,6 +8,7 @@ import { ErrorLabel } from '../../components/Forms/validation/ErrorLabel'
 import { SubmitMessage } from '../../components/Forms/validation/SubmitMessage'
 import { useInternationalization } from '../../components/Hooks'
 import { ContactInfo } from '../../components/Layout/ContactInfo'
+import Head from 'next/head'
 
 const RESIDENTIAL_ADDRESS = 1
 const MAILING_ADDRESS = 2
@@ -320,246 +321,267 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
       }
     }
     return (
-      <Layout data={data} title="Contact Information">
-        {isDisabled ? (
-          <ContactInfo active={false} />
-        ) : (
-          <ContactInfo active={true} />
-        )}
-        <h3 className="h5 mb-8">Residential Address</h3>
-        <form onSubmit={handleSubmit} noValidate>
-          <div className="flex-auto sm:w-2/3 md:max-w-xl lg:w-1/2 ml-2">
-            <Input
-              type="text"
-              name="streetNumber"
-              label="Street Number"
-              error={steetNumberError}
-              value={streetNumber}
-              onChange={(e) => setStreetNumber(e.target.value)}
-              placeholder="Enter Street Number"
-              required
-              autoFocus
-              disabled={isDisabled}
-            />
-            <Input
-              type="text"
-              name="streetName"
-              label="Street Name"
-              error={steetNameError}
-              value={streetName}
-              onChange={(e) => setStreetName(e.target.value)}
-              placeholder="Enter Street Name"
-              required
-              disabled={isDisabled}
-            />
-            <Input
-              type="text"
-              name="aptNumber"
-              label="Apt Number"
-              error={aptNumberError}
-              value={aptNumber}
-              onChange={(e) => setAptNumber(e.target.value)}
-              placeholder="Enter Apartment Number"
-              disabled={isDisabled}
-            />
-            <Input
-              type="text"
-              name="postalCode"
-              label="Postal Code"
-              error={postalCodeError}
-              value={postalCode}
-              onChange={(e) => setPostalCode(e.target.value)}
-              placeholder="Enter Postal Code"
-              required
-              disabled={isDisabled}
-            />
-            <Input
-              type="text"
-              name="city"
-              label="City"
-              error={cityError}
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              placeholder="Enter City"
-              required
-              disabled={isDisabled}
-            />
-            <section className="mb-8">
-              {countryError ? <ErrorLabel errorMessage={countryError} /> : ''}
-              <label>
-                <span className="text-danger">*</span> Country
-                <span className="text-danger"> (required)</span>
-              </label>
-              <Select
-                name="country"
-                options={options}
-                value={options.filter((option) => option.value === country)}
-                onChange={changeCountryHandler}
-                isClearable
-                isDisabled={isDisabled}
-                placeholder="Select your country of residence"
+      <div>
+        <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `var adobeDataLayer = [];
+                adobeDataLayer.push({
+                  "event": "pageLoad",
+                  "page": {
+                      "title": "eng-profile management-contact information",
+                      "language": "eng",
+                      "creator": "Employment and Social Development Canada",
+                      "accessRights": "2",
+                      "service": " ESDC-EDSC_ProfileManagement -EstimateurDePrestationsDeVieillesse"
+                  }
+                });
+            `,
+            }}
+          />
+          <script src="https://assets.adobedtm.com/be5dfd287373/0127575cd23a/launch-913b1beddf7a-staging.min.js"></script>
+        </Head>
+        <Layout data={data} title="Contact Information">
+          {isDisabled ? (
+            <ContactInfo active={false} />
+          ) : (
+            <ContactInfo active={true} />
+          )}
+          <h3 className="h5 mb-8">Residential Address</h3>
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="flex-auto sm:w-2/3 md:max-w-xl lg:w-1/2 ml-2">
+              <Input
+                type="text"
+                name="streetNumber"
+                label="Street Number"
+                error={steetNumberError}
+                value={streetNumber}
+                onChange={(e) => setStreetNumber(e.target.value)}
+                placeholder="Enter Street Number"
+                required
+                autoFocus
+                disabled={isDisabled}
               />
-            </section>
+              <Input
+                type="text"
+                name="streetName"
+                label="Street Name"
+                error={steetNameError}
+                value={streetName}
+                onChange={(e) => setStreetName(e.target.value)}
+                placeholder="Enter Street Name"
+                required
+                disabled={isDisabled}
+              />
+              <Input
+                type="text"
+                name="aptNumber"
+                label="Apt Number"
+                error={aptNumberError}
+                value={aptNumber}
+                onChange={(e) => setAptNumber(e.target.value)}
+                placeholder="Enter Apartment Number"
+                disabled={isDisabled}
+              />
+              <Input
+                type="text"
+                name="postalCode"
+                label="Postal Code"
+                error={postalCodeError}
+                value={postalCode}
+                onChange={(e) => setPostalCode(e.target.value)}
+                placeholder="Enter Postal Code"
+                required
+                disabled={isDisabled}
+              />
+              <Input
+                type="text"
+                name="city"
+                label="City"
+                error={cityError}
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="Enter City"
+                required
+                disabled={isDisabled}
+              />
+              <section className="mb-8">
+                {countryError ? <ErrorLabel errorMessage={countryError} /> : ''}
+                <label>
+                  <span className="text-danger">*</span> Country
+                  <span className="text-danger"> (required)</span>
+                </label>
+                <Select
+                  name="country"
+                  options={options}
+                  value={options.filter((option) => option.value === country)}
+                  onChange={changeCountryHandler}
+                  isClearable
+                  isDisabled={isDisabled}
+                  placeholder="Select your country of residence"
+                />
+              </section>
 
-            <section className="mb-4">
-              <label htmlFor="mailing">
-                <input
-                  type="checkbox"
-                  id="mailing"
-                  className="ml-2 rounded"
-                  checked={!hasDifferentMailing}
-                  disabled={isDisabled}
-                  onChange={(e) => {
-                    refreshMailingAddressData(!e.target.checked)
-                    setHasDifferentMailing(!e.target.checked)
-                  }}
-                />
-                <span> Mailing Address is same as residential Address?</span>
-              </label>
-            </section>
-
-            {hasDifferentMailing ? (
-              <div className="mb-4">
-                <h3 className="h5 mb-4">Mailing Address</h3>
-                <Input
-                  type="text"
-                  name="streetNumberMailing"
-                  label="Street Number"
-                  error={steetNumberError}
-                  value={streetNumberMailing}
-                  onChange={(e) => setStreetNumberMailing(e.target.value)}
-                  placeholder="Enter Street Number"
-                  required
-                  disabled={isDisabled}
-                />
-                <Input
-                  type="text"
-                  name="streetNameMailing"
-                  label="Street Name"
-                  error={steetNameError}
-                  value={streetNameMailing}
-                  onChange={(e) => setStreetNameMailing(e.target.value)}
-                  placeholder="Enter Street Name"
-                  required
-                  disabled={isDisabled}
-                />
-                <Input
-                  type="text"
-                  name="aptNumberMailing"
-                  label="Apt Number"
-                  error={aptNumberError}
-                  value={aptNumberMailing}
-                  onChange={(e) => setAptNumberMailing(e.target.value)}
-                  placeholder="Enter Apartment Number"
-                  disabled={isDisabled}
-                />
-                <Input
-                  type="text"
-                  name="postalCodeMailing"
-                  label="Postal Code"
-                  error={postalCodeError}
-                  value={postalCodeMailing}
-                  onChange={(e) => setPostalCodeMailing(e.target.value)}
-                  placeholder="Enter Postal Code"
-                  required
-                  disabled={isDisabled}
-                />
-                <Input
-                  type="text"
-                  name="cityMailing"
-                  label="City"
-                  error={cityError}
-                  value={cityMailing}
-                  onChange={(e) => setCityMailing(e.target.value)}
-                  placeholder="Enter City"
-                  required
-                  disabled={isDisabled}
-                />
-                <section>
-                  {countryError ? (
-                    <ErrorLabel errorMessage={countryError} />
-                  ) : (
-                    ''
-                  )}
-                  <label>
-                    <span className="text-danger">*</span> Country
-                    <span className="text-danger"> (required)</span>
-                  </label>
-
-                  <Select
-                    name="countryMailing"
-                    options={options}
-                    isDisabled={isDisabled}
-                    value={options.filter(
-                      (option) => option.value === countryMailing
-                    )}
-                    onChange={changeCountryMailingHandler}
-                    isClearable
-                    placeholder="Select your country of mailing address"
+              <section className="mb-4">
+                <label htmlFor="mailing">
+                  <input
+                    type="checkbox"
+                    id="mailing"
+                    className="ml-2 rounded"
+                    checked={!hasDifferentMailing}
+                    disabled={isDisabled}
+                    onChange={(e) => {
+                      refreshMailingAddressData(!e.target.checked)
+                      setHasDifferentMailing(!e.target.checked)
+                    }}
                   />
-                </section>
-              </div>
-            ) : (
-              ''
-            )}
+                  <span> Mailing Address is same as residential Address?</span>
+                </label>
+              </section>
 
-            <Input
-              type="email"
-              name="email"
-              label="Email"
-              error={emailError}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter Email"
-              required
-              disabled={isDisabled}
-            />
-            <Input
-              type="text"
-              name="phone"
-              label="Phone"
-              error={phoneError}
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="Enter Phone Number"
-              required
-              disabled={isDisabled}
-            />
-            <SubmitMessage
-              messageType={infoMessage !== undefined ? 'success' : ''}
-              message={infoMessage}
-            />
-            <SubmitMessage
-              messageType={errorMessage !== undefined ? 'error' : ''}
-              message={errorMessage}
-            />
+              {hasDifferentMailing ? (
+                <div className="mb-4">
+                  <h3 className="h5 mb-4">Mailing Address</h3>
+                  <Input
+                    type="text"
+                    name="streetNumberMailing"
+                    label="Street Number"
+                    error={steetNumberError}
+                    value={streetNumberMailing}
+                    onChange={(e) => setStreetNumberMailing(e.target.value)}
+                    placeholder="Enter Street Number"
+                    required
+                    disabled={isDisabled}
+                  />
+                  <Input
+                    type="text"
+                    name="streetNameMailing"
+                    label="Street Name"
+                    error={steetNameError}
+                    value={streetNameMailing}
+                    onChange={(e) => setStreetNameMailing(e.target.value)}
+                    placeholder="Enter Street Name"
+                    required
+                    disabled={isDisabled}
+                  />
+                  <Input
+                    type="text"
+                    name="aptNumberMailing"
+                    label="Apt Number"
+                    error={aptNumberError}
+                    value={aptNumberMailing}
+                    onChange={(e) => setAptNumberMailing(e.target.value)}
+                    placeholder="Enter Apartment Number"
+                    disabled={isDisabled}
+                  />
+                  <Input
+                    type="text"
+                    name="postalCodeMailing"
+                    label="Postal Code"
+                    error={postalCodeError}
+                    value={postalCodeMailing}
+                    onChange={(e) => setPostalCodeMailing(e.target.value)}
+                    placeholder="Enter Postal Code"
+                    required
+                    disabled={isDisabled}
+                  />
+                  <Input
+                    type="text"
+                    name="cityMailing"
+                    label="City"
+                    error={cityError}
+                    value={cityMailing}
+                    onChange={(e) => setCityMailing(e.target.value)}
+                    placeholder="Enter City"
+                    required
+                    disabled={isDisabled}
+                  />
+                  <section>
+                    {countryError ? (
+                      <ErrorLabel errorMessage={countryError} />
+                    ) : (
+                      ''
+                    )}
+                    <label>
+                      <span className="text-danger">*</span> Country
+                      <span className="text-danger"> (required)</span>
+                    </label>
 
-            {isDisabled ? (
-              ''
-            ) : (
-              <div className="flex justify-between items-center mt-2">
-                <input
-                  type="submit"
-                  className="btn btn-primary mr-4"
-                  value="Save"
-                  disabled={loading && true}
-                />
-                <input
-                  type="reset"
-                  className="btn btn-default"
-                  value="Clear all"
-                  onClick={handleReset}
-                  disabled={loading && true}
-                />
-              </div>
-            )}
-          </div>
-        </form>
+                    <Select
+                      name="countryMailing"
+                      options={options}
+                      isDisabled={isDisabled}
+                      value={options.filter(
+                        (option) => option.value === countryMailing
+                      )}
+                      onChange={changeCountryMailingHandler}
+                      isClearable
+                      placeholder="Select your country of mailing address"
+                    />
+                  </section>
+                </div>
+              ) : (
+                ''
+              )}
 
-        <NavButtons
-          fromLocation={`/financial-info?id=${userData}`}
-          toLocation={`/user-preferences?id=${userData}`}
-        />
-      </Layout>
+              <Input
+                type="email"
+                name="email"
+                label="Email"
+                error={emailError}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter Email"
+                required
+                disabled={isDisabled}
+              />
+              <Input
+                type="text"
+                name="phone"
+                label="Phone"
+                error={phoneError}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Enter Phone Number"
+                required
+                disabled={isDisabled}
+              />
+              <SubmitMessage
+                messageType={infoMessage !== undefined ? 'success' : ''}
+                message={infoMessage}
+              />
+              <SubmitMessage
+                messageType={errorMessage !== undefined ? 'error' : ''}
+                message={errorMessage}
+              />
+
+              {isDisabled ? (
+                ''
+              ) : (
+                <div className="flex justify-between items-center mt-2">
+                  <input
+                    type="submit"
+                    className="btn btn-primary mr-4"
+                    value="Save"
+                    disabled={loading && true}
+                  />
+                  <input
+                    type="reset"
+                    className="btn btn-default"
+                    value="Clear all"
+                    onClick={handleReset}
+                    disabled={loading && true}
+                  />
+                </div>
+              )}
+            </div>
+          </form>
+
+          <NavButtons
+            fromLocation={`/financial-info?id=${userData}`}
+            toLocation={`/user-preferences?id=${userData}`}
+          />
+        </Layout>
+      </div>
     )
   }
