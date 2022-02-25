@@ -3,31 +3,30 @@ import { Layout } from '../../components/Layout'
 import Head from 'next/head'
 import { NavButtons } from '../../components/NavButtons'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import { sendAnalyticsRequest } from '../../utils/web/helpers/utils'
 
 export default function Home({ data }) {
   const router = useRouter()
   const userData = router.query.id
 
+  useEffect(() => {
+    // only run on mount on the client
+    if (process.browser) {
+      const win = window as Window &
+        typeof globalThis & { adobeDataLayer: any; _satellite: any }
+      const lang = 'eng'
+      const creator = 'Employment and Social Development Canada'
+      const title = lang + '-profile management-personal information'
+
+      sendAnalyticsRequest(lang, title, creator, win)
+    }
+  })
+
   return (
     <div>
       <Head>
         <title>Personal Information</title>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `var adobeDataLayer = [];
-              adobeDataLayer.push({
-                "event": "pageLoad",
-                "page": {
-                    "title": "eng-profile management-personal information",
-                    "language": "eng",
-                    "creator": "Employment and Social Development Canada",
-                    "accessRights": "2",
-                    "service": " ESDC-EDSC_ProfileManagement -EstimateurDePrestationsDeVieillesse"
-                }
-            });
-            `,
-          }}
-        />
         <script src="https://assets.adobedtm.com/be5dfd287373/0127575cd23a/launch-913b1beddf7a-staging.min.js"></script>
       </Head>
       <Layout data={data} title="Personal Information">

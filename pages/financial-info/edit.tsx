@@ -1,6 +1,20 @@
+import { useEffect } from 'react'
 import { CommonFinancialInfo } from '../../components/Layout/CommonFinancialInfo'
+import { sendAnalyticsRequest } from '../../utils/web/helpers/utils'
 
 export default function Edit({ data }) {
+  useEffect(() => {
+    // only run on mount on the client
+    if (process.browser) {
+      const win = window as Window &
+        typeof globalThis & { adobeDataLayer: any; _satellite: any }
+      const lang = 'eng'
+      const creator = 'Employment and Social Development Canada'
+      const title = lang + '-profile management-financial information'
+
+      sendAnalyticsRequest(lang, title, creator, win)
+    }
+  })
   return (
     <CommonFinancialInfo data={data} isDisabled={false}></CommonFinancialInfo>
   )
