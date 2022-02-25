@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1645819543874" clover="3.2.0">
-  <project timestamp="1645819543874" name="All files">
+<coverage generated="1645820986451" clover="3.2.0">
+  <project timestamp="1645820986451" name="All files">
     <metrics statements="494" coveredstatements="75" conditionals="329" coveredconditionals="35" methods="116" coveredmethods="21" elements="939" coveredelements="131" complexity="0" loc="494" ncloc="494" packages="17" files="35" classes="35"/>
     <package name="components.Alert">
       <metrics statements="17" coveredstatements="0" conditionals="9" coveredconditionals="0" methods="3" coveredmethods="0"/>
@@ -488,13 +488,13 @@
         <line num="17" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
       </file>
     </package>
     <package name="pages.api">
@@ -613,10 +613,10 @@
         <line num="22" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="94" count="0" type="stmt"/>
-        <line num="95" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
         <line num="98" count="0" type="stmt"/>
-        <line num="100" count="0" type="stmt"/>
       </file>
     </package>
     <package name="pages.user-preferences">
