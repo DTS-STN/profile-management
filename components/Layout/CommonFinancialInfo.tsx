@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Input } from '../../components/Forms/Input'
 import { SubmitMessage } from '../../components/Forms/validation/SubmitMessage'
 import { useInternationalization } from '../../components/Hooks'
@@ -7,7 +7,6 @@ import { Layout } from '../../components/Layout'
 import { FinancialInfo } from '../../components/Layout/FinancialInfo'
 import { NavButtons } from '../../components/NavButtons'
 import Head from 'next/head'
-import { sendAnalyticsRequest } from '../../utils/web/helpers/utils'
 
 export const CommonFinancialInfo: React.FC<{
   data: any
@@ -15,19 +14,6 @@ export const CommonFinancialInfo: React.FC<{
 }> = ({ data, isDisabled }) => {
   const router = useRouter()
   const userData = router.query.id
-
-  useEffect(() => {
-    // only run on mount on the client
-    if (process.browser) {
-      const win = window as Window &
-        typeof globalThis & { adobeDataLayer: any; _satellite: any }
-      const lang = 'eng'
-      const creator = 'Employment and Social Development Canada'
-      const title = lang + '-profile management-financial information'
-
-      sendAnalyticsRequest(lang, title, creator, win)
-    }
-  })
 
   const [financialInfo, setFinancialInfo] = useState(
     data.userFinancialInfo != null ? data.userFinancialInfo : undefined

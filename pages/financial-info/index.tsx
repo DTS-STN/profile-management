@@ -1,39 +1,22 @@
 import { useRouter } from 'next/router'
 import { useInternationalization } from '../../components/Hooks'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CommonFinancialInfo } from '../../components/Layout/CommonFinancialInfo'
+import { sendAnalyticsRequest } from '../../utils/web/helpers/utils'
 
 export default function Index({ data }) {
-  const router = useRouter()
-  const userData = router.query.id
+  useEffect(() => {
+    // only run on mount on the client
+    if (process.browser) {
+      const win = window as Window &
+        typeof globalThis & { adobeDataLayer: any; _satellite: any }
+      const lang = 'eng'
+      const creator = 'Employment and Social Development Canada'
+      const title = lang + '-profile management-financial information'
 
-  const financialInfo = data.userFinancialInfo
-
-  const [institutionNumberError, setInstitutionNumberError] =
-    useState<string>(undefined)
-  const [branchNumberError, setBranchNumberError] = useState<string>(undefined)
-  const [accountNumberError, setAccountNumberError] =
-    useState<string>(undefined)
-
-  const [loading, setLoading] = useState<boolean>(false)
-  const [infoMessage, setInfoMessage] = useState<string>(undefined)
-  const [errorMessage, setErrorMessage] = useState<string>(undefined)
-
-  const [branchNumber, setBranchNumber] = useState<string>(
-    financialInfo ? financialInfo.transitNumber : ''
-  )
-  const [institutionNumber, setInstitutionNumber] = useState<string>(
-    financialInfo ? financialInfo.institutionNumber : ''
-  )
-  const [accountNumber, setAccountNumber] = useState<string>(
-    financialInfo ? financialInfo.accountNumber : ''
-  )
-
-  const branch = useInternationalization('branch')
-  const institution = useInternationalization('institution')
-  const account = useInternationalization('account')
-  const submitErrorMsg = useInternationalization('submitError')
-
+      sendAnalyticsRequest(lang, title, creator, win)
+    }
+  })
   return (
     <CommonFinancialInfo data={data} isDisabled={true}></CommonFinancialInfo>
   )

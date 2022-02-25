@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Layout } from '../../components/Layout'
 import { Input } from '../../components/Forms/Input'
 import Select from 'react-select'
@@ -9,7 +9,6 @@ import { SubmitMessage } from '../../components/Forms/validation/SubmitMessage'
 import { useInternationalization } from '../../components/Hooks'
 import { ContactInfo } from '../../components/Layout/ContactInfo'
 import Head from 'next/head'
-import { sendAnalyticsRequest } from '../../utils/web/helpers/utils'
 
 const RESIDENTIAL_ADDRESS = 1
 const MAILING_ADDRESS = 2
@@ -18,19 +17,6 @@ export const CommonContactInfo: React.FC<{ data: any; isDisabled?: boolean }> =
   ({ data, isDisabled }) => {
     const router = useRouter()
     const userData = router.query.id
-
-    useEffect(() => {
-      // only run on mount on the client
-      if (process.browser) {
-        const win = window as Window &
-          typeof globalThis & { adobeDataLayer: any; _satellite: any }
-        const lang = 'eng'
-        const creator = 'Employment and Social Development Canada'
-        const title = lang + '-profile management-contact information'
-
-        sendAnalyticsRequest(lang, title, creator, win)
-      }
-    })
 
     const [contactInfo, setContactInfo] = useState(
       data.userContact ? data.userContact : undefined
