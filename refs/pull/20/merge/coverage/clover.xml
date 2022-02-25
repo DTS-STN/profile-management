@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1645820986451" clover="3.2.0">
-  <project timestamp="1645820986451" name="All files">
-    <metrics statements="494" coveredstatements="75" conditionals="329" coveredconditionals="35" methods="116" coveredmethods="21" elements="939" coveredelements="131" complexity="0" loc="494" ncloc="494" packages="17" files="35" classes="35"/>
+<coverage generated="1645823346802" clover="3.2.0">
+  <project timestamp="1645823346802" name="All files">
+    <metrics statements="495" coveredstatements="75" conditionals="329" coveredconditionals="35" methods="117" coveredmethods="21" elements="941" coveredelements="131" complexity="0" loc="495" ncloc="495" packages="17" files="36" classes="36"/>
     <package name="components.Alert">
       <metrics statements="17" coveredstatements="0" conditionals="9" coveredconditionals="0" methods="3" coveredmethods="0"/>
       <file name="enums.ts" path="/home/runner/work/profile-management/profile-management/components/Alert/enums.ts">
@@ -473,10 +473,14 @@
       </file>
     </package>
     <package name="pages">
-      <metrics statements="16" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="2"/>
+      <metrics statements="17" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="2"/>
       <file name="_app.tsx" path="/home/runner/work/profile-management/profile-management/pages/_app.tsx">
         <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="6" count="0" type="stmt"/>
+      </file>
+      <file name="_document.tsx" path="/home/runner/work/profile-management/profile-management/pages/_document.tsx">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
       </file>
       <file name="index.tsx" path="/home/runner/work/profile-management/profile-management/pages/index.tsx">
         <metrics statements="15" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="2"/>
