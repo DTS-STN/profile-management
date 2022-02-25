@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/142</span>
+                <span class='fraction'>0/135</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/144</span>
+                <span class='fraction'>0/142</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/25</span>
+                <span class='fraction'>0/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/142</span>
+                <span class='fraction'>0/135</span>
             </div>
         
             
@@ -631,21 +631,7 @@
 <a name='L572'></a><a href='#L572'>572</a>
 <a name='L573'></a><a href='#L573'>573</a>
 <a name='L574'></a><a href='#L574'>574</a>
-<a name='L575'></a><a href='#L575'>575</a>
-<a name='L576'></a><a href='#L576'>576</a>
-<a name='L577'></a><a href='#L577'>577</a>
-<a name='L578'></a><a href='#L578'>578</a>
-<a name='L579'></a><a href='#L579'>579</a>
-<a name='L580'></a><a href='#L580'>580</a>
-<a name='L581'></a><a href='#L581'>581</a>
-<a name='L582'></a><a href='#L582'>582</a>
-<a name='L583'></a><a href='#L583'>583</a>
-<a name='L584'></a><a href='#L584'>584</a>
-<a name='L585'></a><a href='#L585'>585</a>
-<a name='L586'></a><a href='#L586'>586</a>
-<a name='L587'></a><a href='#L587'>587</a>
-<a name='L588'></a><a href='#L588'>588</a>
-<a name='L589'></a><a href='#L589'>589</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L575'></a><a href='#L575'>575</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -657,27 +643,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1233,7 +1205,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useEffect, useState } from 'react'
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react'
 import { Layout } from '../../components/Layout'
 import { Input } from '../../components/Forms/Input'
 import Select from 'react-select'
@@ -1244,7 +1216,6 @@ import { SubmitMessage } from '../../components/Forms/validation/SubmitMessage'
 import { useInternationalization } from '../../components/Hooks'
 import { ContactInfo } from '../../components/Layout/ContactInfo'
 import Head from 'next/head'
-import { sendAnalyticsRequest } from '../../utils/web/helpers/utils'
 &nbsp;
 const RESIDENTIAL_ADDRESS = <span class="cstat-no" title="statement not covered" >1</span>
 const MAILING_ADDRESS = <span class="cstat-no" title="statement not covered" >2</span>
@@ -1253,19 +1224,6 @@ export const CommonContactInfo: React.FC&lt;{ data: any; isDisabled?: boolean }&
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  ({</span> data, isDisabled }) =&gt; {</span>
     const router = <span class="cstat-no" title="statement not covered" >useRouter()</span>
     const userData = <span class="cstat-no" title="statement not covered" >router.query.id</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-      // only run on mount on the client
-<span class="cstat-no" title="statement not covered" >      if (process.browser) {</span>
-        const win = <span class="cstat-no" title="statement not covered" >window as Window &amp;</span>
-          typeof globalThis &amp; { adobeDataLayer: any; _satellite: any }
-        const lang = <span class="cstat-no" title="statement not covered" >'eng'</span>
-        const creator = <span class="cstat-no" title="statement not covered" >'Employment and Social Development Canada'</span>
-        const title = <span class="cstat-no" title="statement not covered" >lang + '-profile management-contact information'</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        sendAnalyticsRequest(lang, title, creator, win)</span>
-      }
-    })
 &nbsp;
     const [contactInfo, setContactInfo] = <span class="cstat-no" title="statement not covered" >useState(</span>
       data.userContact ? data.userContact : undefined
@@ -1828,7 +1786,7 @@ export const CommonContactInfo: React.FC&lt;{ data: any; isDisabled?: boolean }&
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Feb 24 2022 22:51:02 GMT+0000 (Coordinated Universal Time)
+                at Fri Feb 25 2022 20:05:43 GMT+0000 (Coordinated Universal Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
