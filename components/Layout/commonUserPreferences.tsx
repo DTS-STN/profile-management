@@ -408,8 +408,6 @@ export const CommonUserPreferences: React.FC<{
           toLocation={`/user-preferences?id=${userData}`}
         />
       </Layout>
-      <script src="/scripts/adobe.js"></script>
-      <script type="text/javascript">_satellite.pageBottom()</script>
     </div>
   )
 }

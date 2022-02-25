@@ -30,8 +30,6 @@ export default function Home({ data }) {
       <Layout data={data} title="User list">
         <UserList data={data} />
       </Layout>
-      <script src="/scripts/adobe.js"></script>
-      <script type="text/javascript">_satellite.pageBottom()</script>
     </div>
   )
 }

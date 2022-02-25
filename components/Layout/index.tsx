@@ -61,6 +61,8 @@ export const Layout: React.VFC<{
           {children}
         </div>
       </div>
+      <script src="/scripts/adobe.js"></script>
+      <script type="text/javascript">_satellite.pageBottom()</script>
       <Footer />
     </main>
   )
